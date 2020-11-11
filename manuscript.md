@@ -20,9 +20,9 @@ The benefits of data standardization:
 
 ## Metadata.csv
 
-| OBSERVATION_ID | COORDINATE | SAMPLING EFFORT | DATETIME |
-|-|-|-|-|
-|-|-|-|-|
+| STUDY_ID  | OBSERVATION_ID | COORDINATE | SAMPLING EFFORT | DATETIME |
+|-|-|-|-|-|
+|-|-|-|-|-|
 
 
 ## Biotic.csv
@@ -38,8 +38,8 @@ The benefits of data standardization:
 names in the schema (MAT, MAP, Elevation, Humidity, Temperature, blah blah blah)
 
 | OBSERVATION_ID | VARIABLE_NAME | VARIABLE_VALUE | VARIABLE_UNIT |
-|-|-|-|-|
-|-|-|-|-|
+|-|-|-|-|-|
+|-|-|-|-|-|
 
 
 # References
