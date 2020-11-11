@@ -31,13 +31,18 @@ The benefits of data standardization:
 |-|-|-|-|
 |-|-|-|-|
 
-
-
 ## Abiotic.csv
 - Set of environmental variables. Some are common enough to have predefined
-names in the schema (MAT, MAP, Elevation, Humidity, Temperature, blah blah blah)
+names in the schema (MAT, MAP, Elevation, blah blah blah).
 
 | OBSERVATION_ID | VARIABLE_NAME | VARIABLE_VALUE | VARIABLE_UNIT |
+|-|-|-|-|-|
+|-|-|-|-|-|
+
+
+## meta-metadata.csv?
+
+| STUDY_ID  | DATA_TYPE | DATA_URL | CONTACT_PERSON |
 |-|-|-|-|-|
 |-|-|-|-|-|
 
