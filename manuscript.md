@@ -9,42 +9,61 @@ Macroecological data is by definition collected across scales which necessitate 
 The solution to this problem is standardization---developing a robust schema such that data collected in a variety of systems can be assimilated and integrated into larger scale analysis of ecological processes. Other scientific disciplines have benefited from open standards for file formats (FITS in astronomy, the neuroscience one, other examples).
 
 The benefits of data standardization:
-1) software for data analysis can easily interface with new data, as well as existing databases.
 
-2) reproducability of published results
+1. software for data analysis can easily interface with new data, as well as existing databases (less data wrangling)
+2. reproducability of published results
 
 [@Woolley2020BioMar]
 
 
 # Data Schema for Macroecology
-
-## Metadata.csv
+## metadata (*.meta)
 
 | STUDY_ID  | OBSERVATION_ID | COORDINATE | SAMPLING EFFORT | DATETIME |
 |-|-|-|-|-|
 |-|-|-|-|-|
+|-|-|-|-|-|
 
 
-## Biotic.csv
+
+## occupancy/abundance data (*.occ)
 
 | OBSERVATION_ID | TAXONOMIC_ID | OBSERVATION_TYPE | OBSERVATION_VALUE |
 |-|-|-|-|
 |-|-|-|-|
+|-|-|-|-|-|
 
-## Abiotic.csv
+## trait data (*.trait)
+
+| OBSERVATION_ID | TAXONOMIC_ID | TRAIT_TYPE | TRAIT_VALUE |
+|-|-|-|-|
+|-|-|-|-|
+|-|-|-|-|-|
+
+
+## abiotic environment data (*.env)
 - Set of environmental variables. Some are common enough to have predefined
-names in the schema (MAT, MAP, Elevation, blah blah blah).
+names in the schema (MAT, MAP, Elevation, etc.), but there may need to be room for studies to also name define system-specific env variables?
 
 | OBSERVATION_ID | VARIABLE_NAME | VARIABLE_VALUE | VARIABLE_UNIT |
 |-|-|-|-|-|
 |-|-|-|-|-|
+|-|-|-|-|-|
 
+## interaction data (*.int)
 
-## meta-metadata.csv?
+| OBSERVATION_ID | TAXONOMIC_ID1 | TAXONOMIC_ID2 | INTERACTION_TYPE | INTERACTION_VALUE |
+|-|-|-|-|-|
+|-|-|-|-|-|
+|-|-|-|-|-|
+
+## meta-metadata? (*.stdy)
 
 | STUDY_ID  | DATA_TYPE | DATA_URL | CONTACT_PERSON |
 |-|-|-|-|-|
 |-|-|-|-|-|
+|-|-|-|-|-|
+
 
 
 # References
