@@ -52,16 +52,16 @@
             </div>
         </div>
     </header>
-    
+
     <main class="container">
         <section class="abstract">
             <b>Abstract:</b> ${ description }<br />
             <div class="artifacts">
-                <a href="$filename$-copyedit.pdf" title="Draft PDF" target="_blank">draft</a>
-                <a href="$filename$-preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
+                <a href="copyedit.pdf" title="Draft PDF" target="_blank">draft</a>
+                <a href="preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
             </div>
         </section>
-        
+
         <article>
             ${ body }
         </article>
@@ -69,12 +69,12 @@
 
     <footer>
         <div class="container">
-            <h2>Affiliations</h2> 
+            <h2>Affiliations</h2>
             ${ institutions:_list_institutions()[; ] }
         </div>
     </footer>
-    
-    
+
+
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
