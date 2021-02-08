@@ -9,27 +9,30 @@ Macroecological data is by definition collected across scales which necessitate 
 **1. Introduction**
 
 _Paragraph One (250 words)_: What are the current problems with the availability of ecological data?
-   - Ecological data as it currently exists is very difficult to access and reuse  [@Poisot2019EcoDat; @Borregaard2016MorRep; @Gonzalez2015ActSta].
-   - Combining ecological data from many sources remains difficult yet necessary.
-   - Many databases of ecological and environmental data exist, yet synthesizing this data into a single product suitable for analysis often remains tedious.
-   - Next-generation biodiversity monitoring will necessitate the collection and processing of increasing amounts of data from a variety of sources, requiring increasing flexibility and automation for computationally intensive tasks.
-   - Machine learning methods have strong potential for large scale data
+
+- Ecological data as it currently exists is very difficult to access and reuse  [@Poisot2019EcoDat; @Borregaard2016MorRep; @Gonzalez2015ActSta].
+- Combining ecological data from many sources remains difficult yet necessary.
+- Many databases of ecological and environmental data exist, yet synthesizing this data into a single product suitable for analysis often remains tedious.
+- Next-generation biodiversity monitoring will necessitate the collection and processing of increasing amounts of data from a variety of sources, requiring increasing flexibility and automation for computationally intensive tasks.
+- Machine learning methods have strong potential for large scale data
 
 
 _Paragraph Two (250 words):_ Why are open standards a solution?
+
 - Open standards for the representation of ecological data will 1) enable new forms of analysis by making combining data from different sources easier, 2) enable continuous integration of new data for next-generation biodiversity monitoring, and 3) aid in reproduce-ability for published results.
 
 _Paragraph Three (250 words):_ How will they do this? We display case studies where standardization of data has enabled other fields
+
 - We show how EcoJulia enables standardization of data and provides a foundation for open standards
 
 _Paragraph Four (250 words):_ What is the rest of this paper?
+
 - Case studies of data standardization that has enabled coordination
 at the scale required for global ecology
-- f
+
 
 2. _**BOX: case studies:** (300 words)_
 - .fasta (100 words)
-   - Open standard (.fasta)
 - GeoTIFF (100 words)
 - FITS (100 words)
 
