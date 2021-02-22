@@ -7,9 +7,9 @@ bibliography: [references.bib]
 Ecological data as it exists is very difficult to access and reuse
 [@Poisot2019EcoDat; @Gonzalez2015ActSta]. Many databases of ecological and
 environmental data exist, but synthesizing this data into a single product
-suitable for analysis often remains tedious, as data are not in formats that can
-be easily interfaced. Yet, assimilation of data at increasing spatial and
-temporal scales is necessary to answer both pure and applied questions about
+suitable for analysis often remains tedious as data are not in formats that can
+be easily interfaced. Despite this, the assimilation of data at increasing spatial and
+temporal scales is necessary, both to answer pure and applied questions about
 biodiversity and to quantify human influence on the biosphere
 [@Giron-Nava2017QuaArg]. Next-generation biodiversity monitoring will
 necessitate the collection and processing of increasing amounts of data from a
@@ -34,7 +34,6 @@ by show how `EcoJulia`, a set of libraries, tools, and database interfaces
 written in the `Julia` programming language [@Bezanson2015JulFre], enables
 simpler synthesis of macroecological data than existing tools, and is primed to
 become a vitally needed open-standard for ecological data.
-
 
 # Box: Case Studies of Open Standards
 
@@ -65,22 +64,29 @@ instrument is turned on, it can report data to a public repository in the
 specified format, detaching the collection and analysis of data done by an
 individual from the process of making that information publicly available.
 
+The message here is automation (in situ sensors routinely uploading data to servers, servers continuously pulling satellite data), and subsequent dimensionality reduction and composition of different remotely collected data.
+
 
 # Toward an open standard for ecological data: _EcoJulia_
 
 `EcoJulia` is a set of analysis packages and database interfaces for ecological
-data written in the `Julia` programming language [@Bezanson2015JulFre]. How does
-EcoJulia enable data standardization? The key is in `EcoBase`, a package in
-EcoJulia that uses `Julia`'s abstract type system, which enables representation
+data written in the `Julia` programming language [@Bezanson2015JulFre]. EcoJulia
+embodies an open standard for how ecological data is represented by using
+`Julia`'s abstract type system to create a set interoperable data structures.
+The key is `EcoBase`, a package in EcoJulia which enables common representation
 of data from different sources that represent that same type of information.
-Each data point is represented as a type `AbstractThing`. The set of analysis
-tools in `EcoJulia` each run on collection of `AbstractThing`s (called an
-`AbstractAssemblage`). Using the abstract type as a bridge between the data and
-the analysis enables standardization of data representation, which is embodied
-as a living standard in the code defining abstract types (see @fig:concept).
-This means that we do not have to change any of the analysis code to run it on
-data from a new source, and creating an API to integrate a database is as simple
-as implementing the interface from the data source to the abstract data type.
+Each data point is represented as a subtype of the abstract type
+`AbstractThing`, and the subtype defines the fields for a given data type (i.e.
+`LocationData`). This creates living standard for ecological data embodied in
+the code defining data types.
+
+
+
+Using common type representation as a bridge between data and analysis enables
+straightforward integration of new data sources  as we do not have to change any
+of the analysis code to run it on data from a new source (see @fig:concept).
+Creating an API to integrate a new database is as simple as implementing the
+interface from the data source to the `EcoBase` data types.
 
 ![the caption](./figures/concept.png){#fig:concept}
 
