@@ -29,6 +29,8 @@ a:hover {
 .container {
     max-width: var(--width);
     padding: var(--inner-space);
+    border-top: 15px solid #444444;
+    border-bottom: 20px solid #444444;
 }
 code, pre {
     font-family: "Cousine", monospace;
@@ -37,7 +39,7 @@ pre {
     white-space: pre-wrap;
 }
 h1, h2, h3 {
-    margin-top: 15px;
+    margin-top:
     font-weight: 300;
     color: var(--structure);
 }
@@ -52,8 +54,6 @@ header {
     z-index: 5;
     color: var(--structure);
     margin-top: 30px;
-    border-top: 12px solid #444444;
-    border-bottom: 12px solid #444444;
 }
 .header--title {
     font-weight: 300;
