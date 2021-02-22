@@ -27,8 +27,9 @@ a:hover {
     color: var(--citation);
 }
 .container {
-    margin: 0em auto;
+    margin: 0px auto;
     max-width: var(--width);
+    border: 3px solid #101010;
     padding: var(--inner-space);
 }
 code, pre {
