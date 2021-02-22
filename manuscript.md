@@ -70,17 +70,17 @@ individual from the process of making that information publicly available.
 
 `EcoJulia` is a set of analysis packages and database interfaces for ecological
 data written in the `Julia` programming language [@Bezanson2015JulFre]. How does
-EcoJulia enable data standardization? The key is `Julia`'s type system, which
-enables abstract representation of data from different sources that represent
-that same type of information. Each data point is represented as a type
-`AbstractThing`. The set of analysis tools in `EcoJulia` each run on collection
-of `AbstractThings` (called an `AbstractAssemblage`). Using the abstract type as
-a bridge between the data and the analysis enables standardization of data
-representation, which is embodied as a living standard in the code defining
-abstract types (see @fig:concept). This means that we do not have to change any
-of the analysis code to run it on data from a new source, and creating an API to
-integrate a database is as simple as implementing the interface from the data
-source to the abstract data type.
+EcoJulia enable data standardization? The key is in `EcoBase`, a package in
+EcoJulia that uses `Julia`'s abstract type system, which enables representation
+of data from different sources that represent that same type of information.
+Each data point is represented as a type `AbstractThing`. The set of analysis
+tools in `EcoJulia` each run on collection of `AbstractThing`s (called an
+`AbstractAssemblage`). Using the abstract type as a bridge between the data and
+the analysis enables standardization of data representation, which is embodied
+as a living standard in the code defining abstract types (see @fig:concept).
+This means that we do not have to change any of the analysis code to run it on
+data from a new source, and creating an API to integrate a database is as simple
+as implementing the interface from the data source to the abstract data type.
 
 ![the caption](./figures/concept.png){#fig:concept}
 

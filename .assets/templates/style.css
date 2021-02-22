@@ -41,25 +41,21 @@ h1, h2, h3 {
     color: var(--structure);
 }
 header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    background-color: var(--structure);
     z-index: 5;
-    color: white;
+    color: var(--structure);
 }
 .header--title {
-    font-weight: 900;
-    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.5em;
 }
 .header--authors > span > a {
-    color: white;
-    font-size: 90%;
+    font-size: 0.8em;
     font-weight: 300;
 }
 main {
-    padding-top: 8em !important;
     padding-bottom: 8em !important;
 }
 footer {
