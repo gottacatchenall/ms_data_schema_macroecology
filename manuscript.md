@@ -80,7 +80,7 @@ of the analysis code to run it on data from a new source, and creating an API to
 integrate a database is as simple as implementing the interface from the data
 source to the abstract data type.
 
-![the caption](./figures/concept.png) {#fig:concept}
+![the caption](./figures/concept.png){#fig:concept}
 
 
 Why else is `julia` good?
