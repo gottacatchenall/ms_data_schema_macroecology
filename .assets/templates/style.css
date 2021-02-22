@@ -27,7 +27,6 @@ a:hover {
     color: var(--citation);
 }
 .container {
-    margin: 0px auto;
     max-width: var(--width);
     padding: var(--inner-space);
 }
@@ -38,6 +37,7 @@ pre {
     white-space: pre-wrap;
 }
 h1, h2, h3 {
+    margin-top: 15px;
     font-weight: 300;
     color: var(--structure);
 }
@@ -65,6 +65,7 @@ header {
     font-weight: 300;
 }
 main {
+    line-height: 1.25em;
     padding-bottom: 8em !important;
 }
 footer {
