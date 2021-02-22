@@ -29,7 +29,6 @@ a:hover {
 .container {
     margin: 0px auto;
     max-width: var(--width);
-    border: 3px solid #101010;
     padding: var(--inner-space);
 }
 code, pre {
@@ -52,6 +51,8 @@ header {
     width: 100vw;
     z-index: 5;
     color: var(--structure);
+    border-top: 10px solid #101010;
+    border-bottom: 10px solid #101010;
 }
 .header--title {
     font-weight: 300;
