@@ -67,6 +67,7 @@ individual from the process of making that information publicly available.
 # Toward an open standard for ecological data: _EcoJulia_
 
 How does Julia solve this problem?
+
 - type system enables abstract representation of different data types
 - creating an api for a data base is as simple as implementing the interface to the abstract data type
 - idiomatic, high performance, parallelizable.
