@@ -67,23 +67,24 @@ individual from the process of making that information publicly available.
 # Toward an open standard for ecological data: _EcoJulia_
 
 `EcoJulia` is a set of analysis packages and database interfaces for ecological
-data written in the `Julia` programming language [@Bezanson2015JulFre].
-How does EcoJulia enable data standardization? The key is `Julia`'s type
-system, which enables abstract representation of data from different sources that
-represent that same type of information.
+data written in the `Julia` programming language [@Bezanson2015JulFre]. How does
+EcoJulia enable data standardization? The key is `Julia`'s type system, which
+enables abstract representation of data from different sources that represent
+that same type of information. Each data point is represented as a type
+`AbstractThing`. The set of analysis tools in `EcoJulia` each run on collection
+of `AbstractThings` (called an `AbstractAssemblage`). Using the abstract type as
+a bridge between the data and the analysis enables standardization of data
+representation, which is embodied as a living standard in the code defining
+abstract types (see @fig:concept). This means that we do not have to change any
+of the analysis code to run it on data from a new source, and creating an API to
+integrate a database is as simple as implementing the interface from the data
+source to the abstract data type.
 
-Creating an API to integrate a database is as simple as implementing the interface from the data source to the abstract data type. Each data point is represented as a type `AbstractThing`. The set of analysis tools in `EcoJulia` then run on collection of `AbstractThings` (called an `AbstractAssemblage`)
-
-![the caption](./figures/concept.png)
-
-
-Machine learning methods have proven unreasonably effective for large scale
-data, We don't need to use the raw data   in these methods, we most likely
-should be using engineered features,   and writing feature extraction code is
-orders of magnitudes easier when   the data are standardized.
+![the caption](./figures/concept.png) {#fig:concept}
 
 
 Why else is `julia` good?
+
 - idiomatic, high performance, parallelizable.
 - built in tools for testing
 - built in tools for parallelization
