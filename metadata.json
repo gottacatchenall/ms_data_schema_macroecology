@@ -9,14 +9,31 @@
         "Québec Centre for Biodiversity Sciences"
       ],
       "familyname": "Catchen",
-      "givennames": "M.D.",
+      "givennames": "Michael D.",
       "email": "michael.catchen@mail.mcgill.ca",
       "orcid": "0000-0002-6506-6487"
     },
     {
       "affiliations": [
-           "Université de Montréal",
-           "Québec Centre for Biodiversity Sciences"
+           ""
+         ],
+         "familyname": "Borregaard",
+         "givennames": "Michael K.",
+         "email": "",
+         "orcid": ""
+   },
+    {
+      "affiliations": [
+           ""
+         ],
+         "familyname": "Reeve",
+         "givennames": "Richard",
+         "email": "",
+         "orcid": ""
+   },
+    {
+      "affiliations": [
+          ""
          ],
          "familyname": "Poisot",
          "givennames": "Timothée",
@@ -29,15 +46,15 @@
         "Québec Centre for Biodiversity Sciences"
       ],
       "familyname": "Gonzalez",
-      "givennames": "Andrew ",
+      "givennames": "Andrew",
       "email": "",
       "orcid": "0000-0001-6075-8081"
     }
   ],
   "description": "",
   "keywords": [
-    "pandoc",
-    "pandoc-crossref",
-    "github actions"
+    "standards",
+    "open science",
+    "macroecology"
   ]
 }
