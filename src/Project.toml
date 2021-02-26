@@ -1,0 +1,5 @@
+[deps]
+GBIF = "ee291a33-5a6c-5552-a3c8-0f29a1181037"
+SimpleSDMLayers = "2c645270-77db-11e9-22c3-0f302a89c64c"
+StatsFuns = "4c63d2b9-4356-54db-8cca-17b64c39e42c"
+Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"

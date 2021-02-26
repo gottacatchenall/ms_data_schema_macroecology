@@ -35,36 +35,24 @@ written in the `Julia` programming language [@Bezanson2015JulFre], enables
 simpler synthesis of macroecological data than existing tools, and is primed to
 become a vitally needed open-standard for ecological data.
 
-# Box: Case Studies of Open Standards
+# Lessons from Bioinformatics
 
 Other scientific disciplines have benefited from open standards for data
 representation [@Woolley2020BioMar].
 
-## Case Study One: Bioinformatics
+Bioinformatics faced similar challenges in standardizing data.
 
-Start with the most familiar example to ecologists. Bioinformatics faces similar
-challenges in standardizing data. The `.FASTA` format for representing genomic
-sequences, a standard maintained by NCBI, enables sequence
-data collected by different people, from different machines, with different
-methodologies to be synthesized. The integration with NCBI's standardized taxonomy
-identifiers further enables `FASTA` files to reference metadata about each
-sequence.
+Sequence data collected from different machines, with different methodologies to be synthesized
 
-## Case Study Two: Computer Networking
 
-The development of hypertext transfer protocol (HTTP) provided a standard that
-enabled different computer users, using different internet browsers and hardware
-from different companies, to all parse and send content over the same internet.
+The `.FASTA` format for representing genomic sequences, a standard maintained by
+NCBI, enables integration with NCBI's standardized taxonomy identifiers further
+enables `FASTA` files to reference metadata about each sequence.
 
-## Case Study Three: Astronomy
 
-Flexible Image Transport Systems (`.FITS`) is a data standard in astronomy that
-has proven successful in developing a culture of open data. Every time the
-instrument is turned on, it can report data to a public repository in the
-specified format, detaching the collection and analysis of data done by an
-individual from the process of making that information publicly available.
-
-The message here is automation (in situ sensors routinely uploading data to servers, servers continuously pulling satellite data), and subsequent dimensionality reduction and composition of different remotely collected data.
+The message here is automation (in-situ sensors routinely uploading data to
+servers, servers continuously pulling satellite data), and subsequent
+dimensionality reduction and composition of different remotely collected data.
 
 
 # Toward an open standard for ecological data: _EcoJulia_
@@ -72,12 +60,22 @@ The message here is automation (in situ sensors routinely uploading data to serv
 `EcoJulia` is a set of analysis packages and database interfaces for ecological
 data written in the `Julia` programming language [@Bezanson2015JulFre]. EcoJulia
 embodies an open standard for how ecological data is represented by using
-`Julia`'s abstract type system to create a set interoperable data structures.
+`Julia`'s type system to create a set interoperable data structures.
+
+
 The key is `EcoBase`, a package in EcoJulia which enables common representation
 of data from different sources that represent that same type of information.
-Each data point is represented as a subtype of the abstract type
-`AbstractThing`, and the subtype defines the fields for a given data type (i.e.
-`LocationData`). This creates living standard for ecological data embodied in
+
+
+Type hierarchies and multiple dispatch
+
+Each data point is  as a subtype of the abstract type
+`AbstractThing`, which defines the fields for a given data type.
+
+ (e.g. objects of type `AbstractLocationData` can be either `AbstractPointData`
+ or `AbstractLatticeData`).
+
+This creates a living standard for ecological data embodied in
 the code defining data types.
 
 
@@ -88,7 +86,19 @@ of the analysis code to run it on data from a new source (see @fig:concept).
 Creating an API to integrate a new database is as simple as implementing the
 interface from the data source to the `EcoBase` data types.
 
+
+
+If you make it such that implement the inteface to data aggregation and assembly is
+the only necessary part of analysis, and you ensure the data/interface is publicly
+available. The data/interface becomes package together, so regardless of what the column names in the spreadsheet are available,
+the combined data/interface package gives you everything you need to have the data points in EcoJulia data structure, which
+can be combined with data from anywhere else.
+
 ![the caption](./figures/concept.png){#fig:concept}
+
+
+Example with SDMlayers.jl
+
 
 
 Why else is `julia` good?
