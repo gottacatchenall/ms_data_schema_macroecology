@@ -64,46 +64,58 @@ end
 occupancy = getData(taxon("Picea pungens"))    
 coords = coordinates(occupancy)
 bounds = boundingBox(occupancy)
-environment = worldclim([1,4,12,15]; bounds...)
-for i in 1:length(bcvars) rescale!(environment[i], (0.,1.)) end
+environment = worldclim(collect(1:19); bounds...)
+for i in 1:length(environment) rescale!(environment[i], (0.,1.)) end
 
 features, labels = buildFeaturesMatrix(environment, occupancy)
 
 
-@model mv_logistic_regression(features, labels, σ) = begin
+@model mv_logit(features, labels, σ) = begin
     numDataPts = size(features)[1]
     numFeatures = size(features)[2]
     α ~ Normal(0, σ)
-    β_temp ~ Normal(0, σ)
-    β_tempSeasonality ~ Normal(0, σ)
-    β_precip ~ Normal(0, σ)
-    β_precipSeasonality ~ Normal(0, σ)
-    
+    β ~ MvNormal([0. for i in 1:numFeatures], I*[σ for i in 1:numFeatures])
     for i in 1:numDataPts
-        v = α + β_temp*features[i,1] + β_tempSeasonality*features[i,2] + β_precip*features[i,3]+ β_precipSeasonality*features[i,4]
+        v = α + (β ⋅ features[i,:])
         p = logistic(v)
         labels[i] ~ Bernoulli(p)
     end
-
 end;
 
 
-chain = mapreduce(c -> sample(mv_logistic_regression(features, labels, 1), HMC(0.05, 10), 1000),
+chain = mapreduce(c -> sample(mv_logit(features, labels, 1), HMC(0.05, 10), 1000),
     chainscat,
     1
 )
 
-function predict(chain)
-    predictedProb = similar(envLayer)
+function logit(α, β, features)
+    v = α + (β ⋅ features)
+    p = logistic(v)
+end
+
+function predict(chain, environment)
+    predictedProb = similar(environment[1])
+    numFeatures = length(environment)
+
+    α = mean(chain[:α])
+    βvec = [mean(chain["β[$i]"]) for i in 1:numFeatures]
+
     for i in 1:length(predictedProb)
+        envFeatures= [environment[j][i] for j in 1:numFeatures]
+
+        if (!in(nothing, envFeatures))
+            prob::eltype(predictedProb) = (logit(α,βvec, envFeatures))
+            predictedProb[i] = prob
+        end
     end
-
+    predictedProb
 end
 
-function logit(β_temp, β_tempSeasonality)
-end
+predictionLayer = predict(chain, environment)
 
-scatter(coords)
-plot(environment[1], frame=:box, aspectratio=1, c=:viridis)
-scatter!(coords, c=:white, legend=nothing)
+plot(environment[1])
 
+plot!(predictionLayer, frame=:box, aspectratio=1, xlim=(-125,-90))
+scatter!(coords, c=:white, alpha=0.1, legend=nothing)
+
+plot!(xlim=(-125,-90), ylim=(25,55))
