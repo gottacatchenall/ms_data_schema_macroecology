@@ -60,7 +60,7 @@ function buildFeaturesMatrix(environment::LT, occurrence::OT) where {LT <: Abstr
     return (featuresMatrix[1:cursor, :], labels[1:cursor])
 end
 
-occupancy = getData(taxon("Picea pungens"))    
+occupancy = getData(taxon("Carnegiea gigantea"))    
 coords = coordinates(occupancy)
 bounds = boundingBox(occupancy)
 environment = worldclim(collect(1:19); bounds...)
@@ -82,10 +82,7 @@ features, labels = buildFeaturesMatrix(environment, occupancy)
 end;
 
 
-chain = mapreduce(c -> sample(mv_logit(features, labels, 1), HMC(0.05, 10), 1000),
-    chainscat,
-    1
-)
+chain = sample(mv_logit(features, labels, 1), HMC(0.01, 10), 1500)
 
 function logit(α, β, features)
     v = α + (β ⋅ features)
@@ -112,10 +109,6 @@ end
 
 predictionLayer = predict(chain, environment)
 
-pl = plot(environment[1])
-plot!(predictionLayer, frame=:box, aspectratio=1, xlim=(-125,-90))
-scatter!(coords, c=:white, alpha=0.1, legend=nothing)
-plot!(xlim=(-125,-90), ylim=(25,55))
-
-
+pl = plot(predictionLayer, aspectratio=1, size=(700,1000), xlim=(bounds.left, bounds.right))
+scatter!(coords, c=:white, alpha=0.2, legend=nothing)
 savefig(pl, "out_sdm.png")
