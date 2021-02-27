@@ -3,3 +3,6 @@ dist/
 *synctex*
 references.json
 affiliations.json
+.vscode
+assets
+src/assets

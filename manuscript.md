@@ -27,28 +27,31 @@ forms of analysis by making it easier to combine data from different sources
 [@Heberling2021DatInt], **2)** enable continuous integration of new data for
 next-generation biodiversity monitoring [@Kuhl2020EffBio], and **3)** aid in
 reproduceability and integration of published results [@Borregaard2016MorRep;
-@Zimmerman2008NewKno]. In order to illustrate this, we provide case studies of
-other disciplines that have seen these benefits and greatly reduced the overhead
-of data assimilation across large spatial and temporal scales. We the conclude
-by show how `EcoJulia`, a set of libraries, tools, and database interfaces
-written in the `Julia` programming language [@Bezanson2015JulFre], enables
-simpler synthesis of macroecological data than existing tools, and is primed to
-become a vitally needed open-standard for ecological data.
+@Zimmerman2008NewKno]. In order to illustrate this, we examine how
+bioinformatics  has greatly reduced the overhead of data assimilation. We then
+conclude by showing how `EcoJulia`, a set of libraries, tools, and database
+interfaces written in the `Julia` programming language [@Bezanson2015JulFre],
+enables simpler synthesis of macroecological data than existing tools, and is
+primed to become a vitally needed open-standard for ecological data.
 
 # Lessons from Bioinformatics
 
-Other scientific disciplines have benefited from open standards for data
-representation [@Woolley2020BioMar].
+## Data standardization
 
 Bioinformatics faced similar challenges in standardizing data---sequence data is collected from different machines, with different methodologies and data types.
 The `.FASTA` format for representing genomic sequences, a standard maintained by
 NCBI, enables integration with NCBI's standardized taxonomy identifiers further
 enables `FASTA` files to reference metadata about each sequence.
 
-The message here is automation (in-situ sensors routinely uploading data to
+## Open and accessible
+
+Publication necessitates making data available in a public repository. 
+
+##  Automated integration
+
+Another message here is automation (in-situ sensors routinely uploading data to
 servers, servers continuously pulling satellite data), and subsequent
 dimensionality reduction and composition of different remotely collected data.
-
 
 # Toward an open standard for ecological data: _EcoJulia_
 
@@ -91,7 +94,7 @@ Why else is `julia` good?
 
 ## Example with SimpleSDMLayers.jl
 
-It would be cool if this worked, but it doesn't
+It would be cool if this worked, but it doesn't (at the moment)
 
 ```
 
