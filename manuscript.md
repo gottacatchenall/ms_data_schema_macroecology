@@ -105,17 +105,16 @@ Why else is `julia` good?
 It would be cool if this worked, but it doesn't
 
 ```
+
 using SimpleSDMLayers
 using GBIF
 using Plots
 
-
 occurrence = occurrences(taxon("Picea pungens"))    
-coords = coordinates(occurrence)
-bounds = boundingBox(occurrence)
-environment = worldclim(collect(1:19); bounds...)
+boundingBox = bounds(occurrence)
+environment = worldclim(collect(1:19); boundingBox...)
 
-sdm = RandomForest(environment, occurrence, bounds)
+sdm = RandomForest(environment, occurrence, boundingBox)
 plot(sdm)
 
 ```
