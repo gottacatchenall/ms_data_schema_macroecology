@@ -1,9 +1,9 @@
 using SimpleSDMLayers
 using GBIF
 using Plots
+using LinearAlgebra
 using Turing
 using StatsFuns: logistic
-
 
 getData(tx::GBIFTaxon; country="US") = begin
     occData = occurrences(tx, "hasCoordinate" => true, "country" => country)
@@ -38,14 +38,14 @@ getOccupancyLayer(envLayer::SimpleSDMPredictor, occupancy) = begin
     occLayer
 end
 
-buildFeaturesMatrix(environment, occupancy) = begin
+function buildFeaturesMatrix(environment::LT, occurrence::OT) where {LT <: AbstractVector{T} where T <: SimpleSDMPredictor, OT <: GBIFRecords}
     xDim, yDim = size(environment[1])
     numberSpatialPoints = xDim*yDim
     numFeatures = length(environment)
         
     featuresMatrix = zeros(numberSpatialPoints, numFeatures)
     labels = [false for i in 1:numberSpatialPoints]
-    occupancyLayer = getOccupancyLayer(environment[1], occupancy)
+    occupancyLayer = getOccupancyLayer(environment[1], occurrence)
     
     cursor = 1
     for pt in 1:numberSpatialPoints
@@ -57,7 +57,6 @@ buildFeaturesMatrix(environment, occupancy) = begin
             cursor += 1
         end
     end
-
     return (featuresMatrix[1:cursor, :], labels[1:cursor])
 end
 
@@ -113,9 +112,10 @@ end
 
 predictionLayer = predict(chain, environment)
 
-plot(environment[1])
-
+pl = plot(environment[1])
 plot!(predictionLayer, frame=:box, aspectratio=1, xlim=(-125,-90))
 scatter!(coords, c=:white, alpha=0.1, legend=nothing)
-
 plot!(xlim=(-125,-90), ylim=(25,55))
+
+
+savefig(pl, "out_sdm.png")
