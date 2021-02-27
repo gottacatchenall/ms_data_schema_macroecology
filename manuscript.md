@@ -110,12 +110,12 @@ using GBIF
 using Plots
 
 
-occupancy = getData(taxon("Picea pungens"))    
-coords = coordinates(occupancy)
-bounds = boundingBox(occupancy)
+occurrence = occurrences(taxon("Picea pungens"))    
+coords = coordinates(occurrence)
+bounds = boundingBox(occurrence)
 environment = worldclim(collect(1:19); bounds...)
 
-sdm = RandomForest(environment, occupancy, bounds)
+sdm = RandomForest(environment, occurrence, bounds)
 plot(sdm)
 
 ```
