@@ -61,45 +61,35 @@ dimensionality reduction and composition of different remotely collected data.
 data written in the `Julia` programming language [@Bezanson2015JulFre]. EcoJulia
 embodies an open standard for how ecological data is represented by using
 `Julia`'s type system to create a set interoperable data structures.
-
-
 The key is `EcoBase`, a package in EcoJulia which enables common representation
 of data from different sources that represent that same type of information.
-
-
-Type hierarchies and multiple dispatch
-
-Each data point is  as a subtype of the abstract type
-`AbstractThing`, which defines the fields for a given data type.
-
- (e.g. objects of type `AbstractLocationData` can be either `AbstractPointData`
- or `AbstractLatticeData`).
-
 This creates a living standard for ecological data embodied in
 the code defining data types.
 
 
+Type hierarchies and multiple dispatch.
+Each data point is  as a subtype of the abstract type
+`AbstractThing`, which defines the fields for a given data type.
+(e.g. objects of type `AbstractLocationData` can be either `AbstractPointData`
+ or `AbstractLatticeData`). Dispatch can be done to diffe
+
 
 Using common type representation as a bridge between data and analysis enables
-straightforward integration of new data sources  as we do not have to change any
+straightforward integration of new data sources as we do not have to change any
 of the analysis code to run it on data from a new source (see @fig:concept).
 Creating an API to integrate a new database is as simple as implementing the
 interface from the data source to the `EcoBase` data types.
 
-
-
-If you make it such that implement the inteface to data aggregation and assembly is
-the only necessary part of analysis, and you ensure the data/interface is publicly
-available. The data/interface becomes package together, so regardless of what the column names in the spreadsheet are available,
-the combined data/interface package gives you everything you need to have the data points in EcoJulia data structure, which
-can be combined with data from anywhere else.
-
 ![the caption](./figures/concept.png){#fig:concept}
 
 
-Example with SDMlayers.jl
-
-
+If data aggregation and assembly is the only necessary step in incorporating new
+data into analysis, and you ensure the data/interface pair is publicly
+available, this data can then easily be incorporated into new analysis because
+the interface to change the column names/format of the original data already
+exist. The combined data/interface package gives you everything you need to have
+data in the proper structures, which can be combined with data from anywhere
+else.
 
 Why else is `julia` good?
 
@@ -109,6 +99,26 @@ Why else is `julia` good?
 - built in package manage
 - shorter, more readable, more reusable code than certain competing languages
 
+
+## Example with SimpleSDMLayers.jl
+
+It would be cool if this worked, but it doesn't
+
+```
+using SimpleSDMLayers
+using GBIF
+using Plots
+
+
+occupancy = getData(taxon("Picea pungens"))    
+coords = coordinates(occupancy)
+bounds = boundingBox(occupancy)
+environment = worldclim(collect(1:19); bounds...)
+
+sdm = RandomForest(environment, occupancy, bounds)
+plot(sdm)
+
+```
 
 
 # References
