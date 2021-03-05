@@ -5,9 +5,9 @@ using LinearAlgebra
 using Turing
 using StatsFuns: logistic
 
-getData(tx::GBIFTaxon; country="US") = begin
-    occData = occurrences(tx, "hasCoordinate" => true, "country" => country)
-    while (length(occData)< 1000) 
+getData(tx::GBIFTaxon) = begin
+    occData = occurrences(tx, "hasCoordinate" => "true")
+    while (length(occData)<  1000)
         occurrences!(occData) 
         @info length(occData)
     end
@@ -60,7 +60,7 @@ function buildFeaturesMatrix(environment::LT, occurrence::OT) where {LT <: Abstr
     return (featuresMatrix[1:cursor, :], labels[1:cursor])
 end
 
-occupancy = getData(taxon("Carnegiea gigantea"))    
+occupancy = getData(taxon("Carnegiea gigantea", strict=true))    
 coords = coordinates(occupancy)
 bounds = boundingBox(occupancy)
 environment = worldclim(collect(1:19); bounds...)
@@ -108,7 +108,7 @@ function predict(chain, environment)
 end
 
 predictionLayer = predict(chain, environment)
-
-pl = plot(predictionLayer, aspectratio=1, size=(700,1000), xlim=(bounds.left, bounds.right))
+rescale!(predictionLayer, (0.,1.))
+pl = plot(predictionLayer, aspectratio=1, size=(700,1000), xlim=(-120,-105), ylim=(25,40))
 scatter!(coords, c=:white, alpha=0.2, legend=nothing)
 savefig(pl, "out_sdm.png")

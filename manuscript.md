@@ -38,14 +38,17 @@ primed to become a vitally needed open-standard for ecological data.
 
 ## Data standardization
 
-Bioinformatics faced similar challenges in standardizing data---sequence data is collected from different machines, with different methodologies and data types.
+Bioinformatics faced similar challenges in standardizing data---sequence data is
+collected from different machines, with different methodologies and data types.
 The `.FASTA` format for representing genomic sequences, a standard maintained by
 NCBI, enables integration with NCBI's standardized taxonomy identifiers further
-enables `FASTA` files to reference metadata about each sequence.
+enables `FASTA` files to reference metadata about each sequence. Macroecological
+tools would be wise to use preexisting taxonomical standards as species
+identifiers.
 
 ## Open and accessible
 
-Publication necessitates making data available in a public repository. 
+Publication necessitates making data available in a public repository.
 
 ##  Automated integration
 
@@ -59,54 +62,65 @@ dimensionality reduction and composition of different remotely collected data.
 data written in the `Julia` programming language [@Bezanson2015JulFre]. EcoJulia
 embodies an open standard for how ecological data is represented by using
 `Julia`'s type system to create a set interoperable data structures.
+Rest of paragraph on **type hierarchies and multiple dispatch.**.
 
-Paragraph on **Type hierarchies and multiple dispatch.**:
-`EcoBase`, a package in EcoJulia enables common representation
-of data from different sources that represent that same type of information.
-This creates a living standard for ecological data embodied in
-the code defining data types.
-
-Using common type representation as a bridge between data and analysis enables
-straightforward integration of new data sources as we do not have to change any
-of the analysis code to run it on data from a new source (see @fig:concept).
-Creating an API to integrate a new database is as simple as implementing the
-interface from the data source to the `EcoBase` data types.
-If data aggregation and assembly is the only necessary step in incorporating new
-data into analysis, and you ensure the data/interface pair is publicly
-available, this data can then easily be incorporated into new analysis because
-the interface to change the column names/format of the original data already
-exist. The combined data/interface package gives you everything you need to have
-data in the proper structures, which can be combined with data from anywhere
-else.
+`EcoBase` is a package in EcoJulia which enables common representation of
+ecological data that represents the same type of information. This creates a
+living standard for ecological data embodied in the code defining data types.
+Using standardized types as a bridge between data and analysis is how we create
+an open standard for ecological data. This splits the processes of
+_data aggregation_ and _data analysis_ into discrete parts.
 
 ![the caption](./figures/concept.png){#fig:concept}
 
 
+Integrating either data from a particular study, or a new database, is as simple
+as implementing the interface from the data source to the `EcoBase` data types.
+This will make combining data from multiple sources easier, and yield benefits
+for the development and implementation of novel methods, as the analysis code
+becomes separate from the data source (see @fig:concept). In turn, this will
+enable specialization in development of analysis tools that can be scaled to
+meet the needs of next-generation biodiversity monitoring. Published data can be
+incorporated into public repositories containing both the origin data and the
+interface to transform it into `EcoJulia` data structures, and this combined
+data/interface package is all that is needed to either reproduce the results or
+incorporate that data into a larger data assemblage.
 
 Why else is `julia` good?
 
-- idiomatic, high performance, parallellizable.
+- idiomatic
+- high performance
 - built in tools for testing
 - built in tools for parallelization
 - built in package manage
 - shorter, more readable, more reusable code than certain competing languages
 
 
-## Example with SimpleSDMLayers.jl
+## Example with SpeciesDistributionModels.jl
 
-It would be cool if this worked, but it doesn't (at the moment)
+It would be cool if something like this worked, but it doesn't (at the moment)
 
 ```
-
+using SpeciesDistributionModels: RandomForest, RandomForestParameters
 using SimpleSDMLayers
 using GBIF
 using Plots
 
-occurrence = occurrences(taxon("Picea pungens"))    
-boundingBox = bounds(occurrence)
-environment = worldclim(collect(1:19); boundingBox...)
+records = occurrences(taxon("Picea pungens", "has_coordinates" => "true"))    
+boundingBox = bounds(records, padding=0.1)
 
-sdm = RandomForest(environment, occurrence, boundingBox)
+temperature = worldclim(1, boundingBox...)
+precipitation = worldclim(7, boundingBox...)
+
+occurrence_layer = mask(temperature, records)
+labels = collect(occurrence_layer)
+features = collect(temperature, precipitation)
+
+params = RandomForestParameters()
+model = RandomForest(params)
+train(model, features, labels)
+
+sdm = predict(model, features)
 plot(sdm)
 
 ```
