@@ -1,0 +1,403 @@
+%!TEX TS-program = xelatex
+\documentclass[11pt]{article}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{stix}
+\usepackage[scaled]{helvet}
+\usepackage[scaled]{inconsolata}
+
+\usepackage{lastpage}
+
+\usepackage{setspace}
+
+\usepackage{ccicons}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\makeatletter
+\newcounter{tableno}
+\newenvironment{tablenos:no-prefix-table-caption}{
+  \caption@ifcompatibility{}{
+    \let\oldthetable\thetable
+    \let\oldtheHtable\theHtable
+    \renewcommand{\thetable}{tableno:\thetableno}
+    \renewcommand{\theHtable}{tableno:\thetableno}
+    \stepcounter{tableno}
+    \captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+    \captionsetup{labelformat=default}
+    \let\thetable\oldthetable
+    \let\theHtable\oldtheHtable
+    \addtocounter{table}{-1}
+  }
+}
+\makeatother
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\let\PBS=\PreserveBackslash
+
+\usepackage[breaklinks=true]{hyperref}
+\hypersetup{colorlinks,%
+citecolor=blue,%
+filecolor=blue,%
+linkcolor=blue,%
+urlcolor=blue}
+\usepackage{url}
+
+\usepackage{caption}
+\setcounter{secnumdepth}{0}
+\usepackage{cleveref}
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for \widthof, \maxof
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\maxof{\widthof{#1}}{\csllabelwidth}}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}\geometry{verbose,letterpaper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=4.5cm}
+
+\usepackage{lineno}
+\usepackage[nolists,noheads]{endfloat}
+
+\pagestyle{plain}
+
+\doublespacing
+
+\fancypagestyle{normal}
+{
+  \fancyhf{}
+  \fancyfoot[R]{\footnotesize\sffamily\thepage\ of \pageref*{LastPage}}
+}
+\begin{document}
+\thispagestyle{empty}
+{\Large\bfseries\sffamily Toward an open standard for the representation
+and analysis of macroecological data}
+\vskip 5em
+
+Michael D.\,Catchen\,\textsuperscript{1,2,*}\quad Michael
+K.\,Borregaard\,\textsuperscript{3}\quad Richard\,Reeve\,\textsuperscript{3}\quad Timothée\,Poisot\,\textsuperscript{3,*}\quad Andrew\,Gonzalez\,\textsuperscript{1,2}
+
+\textsuperscript{1}\,McGill University\quad \textsuperscript{2}\,Québec
+Centre for Biodiversity Sciences\quad \textsuperscript{3}\,
+
+\textsuperscript{*}\,\,\texttt{michael.catchen@mail.mcgill.ca}
+\textsuperscript{*}\,\,\texttt{timothee.poisot@umontreal.ca}
+
+\vfill
+This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\
+Last revision: \emph{\today}
+
+\clearpage
+\thispagestyle{empty}
+
+\vfill
+\textbf{\sffamily Abstract: }A paper on why we should develop
+next-generation biodiversitymonitoring systems based on open standards
+for data representation, and how EcoJulia is already doing this.
+\vfill
+
+\clearpage
+\linenumbers
+\pagestyle{normal}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Ecological data as it exists is very difficult to access and reuse
+(Poisot et al. 2019; Gonzalez and Peres-Neto 2015). Many databases of
+ecological and environmental data exist, but synthesizing this data into
+a single product suitable for analysis often remains tedious as data are
+not in formats that can be easily interfaced. Despite this, the
+assimilation of data at increasing spatial and temporal scales is
+necessary, both to answer pure and applied questions about biodiversity
+and to quantify human influence on the biosphere (Giron-Nava et al.
+2017). Next-generation biodiversity monitoring will necessitate the
+collection and processing of increasing amounts of data from a variety
+of sources, requiring increasing flexibility and automation for
+computationally intensive tasks (Hampton et al. 2013). Macroecological
+data is, by definition, collected across scales which necessitate
+collaboration across more individuals than can feasibly coordinate with
+one-another. The solution to this problem is standardization (Zimmerman
+2008)---developing a robust schema such that ecological data collected
+in a variety of contexts can be assimilated and integrated into larger
+scale analysis of ecological processes.
+
+How does standardization solve this problem? Adopting a standard
+representation of ecological data will have three primary benefits:
+\textbf{1}) it will enable new forms of analysis by making it easier to
+combine data from different sources (Heberling et al. 2021), \textbf{2)}
+enable continuous integration of new data for next-generation
+biodiversity monitoring (Kühl et al. 2020), and \textbf{3)} aid in
+reproduceability and integration of published results (Borregaard and
+Hart 2016; Zimmerman 2008). In order to illustrate this, we examine how
+bioinformatics has greatly reduced the overhead of data assimilation. We
+then conclude by showing how \texttt{EcoJulia}, a set of libraries,
+tools, and database interfaces written in the \texttt{Julia} programming
+language (Bezanson et al. 2015), enables simpler synthesis of
+macroecological data than existing tools, and is primed to become a
+vitally needed open-standard for ecological data.
+
+\hypertarget{lessons-from-bioinformatics}{%
+\section{Lessons from
+Bioinformatics}\label{lessons-from-bioinformatics}}
+
+\hypertarget{data-standardization}{%
+\subsection{Data standardization}\label{data-standardization}}
+
+Bioinformatics faced similar challenges in standardizing data---sequence
+data is collected from different machines, with different methodologies
+and data types. The \texttt{.FASTA} format for representing genomic
+sequences, a standard maintained by NCBI, enables integration with
+NCBI's standardized taxonomy identifiers further enables \texttt{FASTA}
+files to reference metadata about each sequence. Macroecological tools
+would be wise to use preexisting taxonomical standards as species
+identifiers.
+
+\hypertarget{open-and-accessible}{%
+\subsection{Open and accessible}\label{open-and-accessible}}
+
+Publication necessitates making data available in a public repository.
+
+\hypertarget{automated-integration}{%
+\subsection{Automated integration}\label{automated-integration}}
+
+Another message here is automation (in-situ sensors routinely uploading
+data to servers, servers continuously pulling satellite data), and
+subsequent dimensionality reduction and composition of different
+remotely collected data.
+
+\hypertarget{toward-an-open-standard-for-ecological-data-ecojulia}{%
+\section{\texorpdfstring{Toward an open standard for ecological data:
+\emph{EcoJulia}}{Toward an open standard for ecological data: EcoJulia}}\label{toward-an-open-standard-for-ecological-data-ecojulia}}
+
+\texttt{EcoJulia} is a set of analysis packages and database interfaces
+for ecological data written in the \texttt{Julia} programming language
+(Bezanson et al. 2015). EcoJulia embodies an open standard for how
+ecological data is represented by using \texttt{Julia}'s type system to
+create a set interoperable data structures. Rest of paragraph on
+\textbf{type hierarchies and multiple dispatch.}.
+
+\texttt{EcoBase} is a package in EcoJulia which enables common
+representation of ecological data that represents the same type of
+information. This creates a living standard for ecological data embodied
+in the code defining data types. Using standardized types as a bridge
+between data and analysis is how we create an open standard for
+ecological data. This splits the processes of \emph{data aggregation}
+and \emph{data analysis} into discrete parts.
+
+\begin{figure}
+\hypertarget{fig:concept}{%
+\centering
+\includegraphics{./figures/concept.png}
+\caption{the caption}\label{fig:concept}
+}
+\end{figure}
+
+Integrating either data from a particular study, or a new database, is
+as simple as implementing the interface from the data source to the
+\texttt{EcoBase} data types. This will make combining data from multiple
+sources easier, and yield benefits for the development and
+implementation of novel methods, as the analysis code becomes separate
+from the data source (see fig.~\ref{fig:concept}). In turn, this will
+enable specialization in development of analysis tools that can be
+scaled to meet the needs of next-generation biodiversity monitoring.
+Published data can be incorporated into public repositories containing
+both the origin data and the interface to transform it into
+\texttt{EcoJulia} data structures, and this combined data/interface
+package is all that is needed to either reproduce the results or
+incorporate that data into a larger data assemblage.
+
+Why else is \texttt{julia} good?
+
+\begin{itemize}
+\tightlist
+\item
+  idiomatic
+\item
+  high performance
+\item
+  built in tools for testing
+\item
+  built in tools for parallelization
+\item
+  built in package manage
+\item
+  shorter, more readable, more reusable code than certain competing
+  languages
+\end{itemize}
+
+\hypertarget{example-with-speciesdistributionmodels.jl}{%
+\subsection{Example with
+SpeciesDistributionModels.jl}\label{example-with-speciesdistributionmodels.jl}}
+
+It would be cool if something like this worked, but it doesn't (at the
+moment)
+
+\begin{verbatim}
+using SpeciesDistributionModels: RandomForest, RandomForestParameters
+using SimpleSDMLayers
+using GBIF
+using Plots
+
+records = occurrences(taxon("Picea pungens", "has_coordinates" => "true"))    
+boundingBox = bounds(records, padding=0.1)
+
+temperature = worldclim(1, boundingBox...)
+precipitation = worldclim(7, boundingBox...)
+
+occurrence_layer = mask(temperature, records)
+labels = collect(occurrence_layer)
+features = collect(temperature, precipitation)
+
+params = RandomForestParameters()
+model = RandomForest(params)
+train(model, features, labels)
+
+sdm = predict(model, features)
+plot(sdm)
+\end{verbatim}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-Bezanson2015JulFre}{}%
+Bezanson, Jeff, Alan Edelman, Stefan Karpinski, and Viral B. Shah. 2015.
+{``Julia: A Fresh Approach to Numerical Computing.''}
+\emph{arXiv:1411.1607 {[}cs{]}}, July.
+\url{http://arxiv.org/abs/1411.1607}.
+
+\leavevmode\hypertarget{ref-Borregaard2016MorRep}{}%
+Borregaard, Michael Krabbe, and Edmund M. Hart. 2016. {``Towards a More
+Reproducible Ecology.''} \emph{Ecography} 39 (4): 349--53.
+\url{https://doi.org/10.1111/ecog.02493}.
+
+\leavevmode\hypertarget{ref-Giron-Nava2017QuaArg}{}%
+Giron-Nava, A, Cc James, Af Johnson, D Dannecker, B Kolody, A Lee, M
+Nagarkar, et al. 2017. {``Quantitative Argument for Long-Term Ecological
+Monitoring.''} \emph{Marine Ecology Progress Series} 572 (May): 269--74.
+\url{https://doi.org/10.3354/meps12149}.
+
+\leavevmode\hypertarget{ref-Gonzalez2015ActSta}{}%
+Gonzalez, Andrew, and Pedro R. Peres-Neto. 2015. {``Act to Staunch Loss
+of Research Data.''} \emph{Nature} 520 (7548): 436--36.
+\url{https://doi.org/10.1038/520436c}.
+
+\leavevmode\hypertarget{ref-Hampton2013BigDat}{}%
+Hampton, Stephanie E., Carly A. Strasser, Joshua J. Tewksbury, Wendy K.
+Gram, Amber E. Budden, Archer L. Batcheller, Clifford S. Duke, and John
+H. Porter. 2013. {``Big Data and the Future of Ecology.''}
+\emph{Frontiers in Ecology and the Environment} 11 (3): 156--62.
+\url{https://doi.org/10.1890/120103}.
+
+\leavevmode\hypertarget{ref-Heberling2021DatInt}{}%
+Heberling, J. Mason, Joseph T. Miller, Daniel Noesgaard, Scott B.
+Weingart, and Dmitry Schigel. 2021. {``Data Integration Enables Global
+Biodiversity Synthesis.''} \emph{Proceedings of the National Academy of
+Sciences} 118 (6). \url{https://doi.org/10.1073/pnas.2018093118}.
+
+\leavevmode\hypertarget{ref-Kuhl2020EffBio}{}%
+Kühl, Hjalmar S., Diana E. Bowler, Lukas Bösch, Helge Bruelheide, Jens
+Dauber, David. Eichenberg, Nico Eisenhauer, et al. 2020. {``Effective
+Biodiversity Monitoring Needs a Culture of Integration.''} \emph{One
+Earth} 3 (4): 462--74.
+\url{https://doi.org/10.1016/j.oneear.2020.09.010}.
+
+\leavevmode\hypertarget{ref-Poisot2019EcoDat}{}%
+Poisot, Timothée, Anne Bruneau, Andrew Gonzalez, Dominique Gravel, and
+Pedro Peres-Neto. 2019. {``Ecological Data Should Not Be So Hard to Find
+and Reuse.''} \emph{Trends in Ecology \& Evolution} 34 (6): 494--96.
+\url{https://doi.org/10.1016/j.tree.2019.04.005}.
+
+\leavevmode\hypertarget{ref-Zimmerman2008NewKno}{}%
+Zimmerman, Ann S. 2008. {``New Knowledge from Old Data: The Role of
+Standards in the Sharing and Reuse of Ecological Data.''} \emph{Science,
+Technology, \& Human Values} 33 (5): 631--52.
+\url{https://doi.org/10.1177/0162243907306704}.
+
+\end{CSLReferences}
+
+\end{document}
