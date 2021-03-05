@@ -36,9 +36,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.63729028"
-     inkscape:cx="1077.2664"
-     inkscape:cy="646.95374"
+     inkscape:zoom="5.0983222"
+     inkscape:cx="1555.9702"
+     inkscape:cy="392.6267"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -157,18 +157,18 @@
        id="path1583"
        sodipodi:nodetypes="csasssszscc" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.389578;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:1.16873, 0.389578;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.400913;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:1.20273, 0.400913;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect10451"
-       width="93.272011"
+       width="98.778221"
        height="117.24606"
-       x="145.59082"
+       x="142.12686"
        y="-27.923203" />
     <rect
-       style="opacity:1;fill:#627793;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.228938;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:0.686802, 0.228938;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;fill:#627793;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.235599;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:0.706784, 0.235599;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect1285-0"
-       width="93.432411"
+       width="98.948097"
        height="40.419926"
-       x="145.67357"
+       x="142.21449"
        y="-29.264082" />
     <text
        xml:space="preserve"
@@ -185,32 +185,32 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;line-height:1.35;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke-width:0.117526"
-       x="166.21501"
+       x="160.93828"
        y="20.352219"
        id="text19238"
        transform="scale(0.9025568,1.1079635)"><tspan
          sodipodi:role="line"
          id="tspan19236"
-         x="166.21501"
+         x="160.93828"
          y="20.352219"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#000000;fill-opacity:1;stroke-width:0.117526">EcologicalNetworks.jl</tspan><tspan
          sodipodi:role="line"
-         x="166.21501"
+         x="160.93828"
          y="30.10655"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#000000;fill-opacity:1;stroke-width:0.117526"
          id="tspan1447">SpeciesDistributionModels.jl</tspan><tspan
          sodipodi:role="line"
-         x="166.21501"
+         x="160.93828"
          y="39.860882"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#000000;fill-opacity:1;stroke-width:0.117526"
          id="tspan1216">SpatialEcology.jl</tspan><tspan
          sodipodi:role="line"
-         x="166.21501"
+         x="160.93828"
          y="49.615211"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#000000;fill-opacity:1;stroke-width:0.117526"
          id="tspan1222">Omniscape.jl</tspan><tspan
          sodipodi:role="line"
-         x="166.21501"
+         x="160.93828"
          y="59.369541"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22543px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#000000;fill-opacity:1;stroke-width:0.117526"
          id="tspan1224">Phylogeny.jl</tspan></text>
@@ -769,52 +769,52 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.04868px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;display:inline;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
-       x="168.98665"
+       x="160.7784"
        y="-14.574693"
        id="text1228"
        transform="scale(0.9025568,1.1079635)"><tspan
          sodipodi:role="line"
          id="tspan1226"
-         x="168.98665"
+         x="160.7784"
          y="-14.574693"
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.04868px;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';fill:#fafafa;fill-opacity:1;stroke-width:0.0911474">Analysis Tools</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;display:inline;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
-       x="169.15067"
+       x="160.94241"
        y="-5.9728193"
        id="text1234"
        transform="scale(0.9025568,1.1079635)"><tspan
          sodipodi:role="line"
-         x="169.15067"
+         x="160.94241"
          y="-5.9728193"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
          id="tspan1238">a set of libraries for specific analyses,</tspan><tspan
          sodipodi:role="line"
-         x="169.15067"
+         x="160.94241"
          y="1.0827309"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
-         id="tspan1242">which take an ::AbstractAssemblage input.</tspan><tspan
+         id="tspan1242">which take an ::AbstractAssemblage input</tspan><tspan
          sodipodi:role="line"
-         x="169.15067"
+         x="160.94241"
          y="8.1382809"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
          id="tspan10615" /><tspan
          sodipodi:role="line"
-         x="169.15067"
+         x="160.94241"
          y="15.193831"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#fafafa;fill-opacity:1;stroke-width:0.0911474"
          id="tspan10617" /></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.04868px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.0911474"
-       x="54.017117"
+       x="49.913044"
        y="-14.410359"
        id="text1274"
        transform="scale(0.9025568,1.1079635)"><tspan
          sodipodi:role="line"
          id="tspan1272"
-         x="54.017117"
+         x="49.913044"
          y="-14.410359"
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.04868px;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';fill:#ffffff;fill-opacity:1;stroke-width:0.0911474">Assembly</tspan></text>
     <rect
@@ -1593,12 +1593,12 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.0911474"
-       x="54.002724"
+       x="49.898651"
        y="-4.9218779"
        id="text1489"
        transform="scale(0.9025568,1.1079635)"><tspan
          sodipodi:role="line"
-         x="54.002724"
+         x="49.898651"
          y="-4.9218779"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#ffffff;fill-opacity:1;stroke-width:0.0911474"
          id="tspan1487">combine data into standardized types</tspan></text>
@@ -1667,7 +1667,7 @@
        d="m 25.517969,57.328106 1.696523,2.779953 1.696523,2.779953 -3.255771,0.07926 -3.255771,0.07926 1.559248,-2.859209 z"
        inkscape:transform-center-x="-0.58272505"
        inkscape:transform-center-y="0.016735754"
-       transform="matrix(-0.01188533,0.55805719,-0.62550613,-0.00468098,182.09984,35.067956)" />
+       transform="matrix(-0.01188533,0.55805719,-0.62550613,-0.00468098,177.33731,35.067956)" />
     <path
        sodipodi:type="star"
        style="fill:#636363;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.694263;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
@@ -1757,11 +1757,11 @@
        id="path1576" />
     <path
        style="fill:#f3f3f3;fill-opacity:1;stroke:#636363;stroke-width:0.665;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 258.91145,37.357895 -21.47813,0.357492"
+       d="m 258.38228,37.357895 -21.47813,0.357492"
        id="path1578" />
     <path
        style="fill:#f3f3f3;fill-opacity:1;stroke:#636363;stroke-width:0.422679;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 143.11379,49.06509 135.16498,48.9881"
+       d="M 138.35126,49.06509 130.40245,48.9881"
        id="path1580"
        sodipodi:nodetypes="cc" />
     <path
@@ -1804,6 +1804,6 @@
        d="m 25.517969,57.328106 1.696523,2.779953 1.696523,2.779953 -3.255771,0.07926 -3.255771,0.07926 1.559248,-2.859209 z"
        inkscape:transform-center-x="-1.0176239"
        inkscape:transform-center-y="-0.0010804267"
-       transform="matrix(-0.03527673,0.9782664,-1.0967269,-0.02438834,325.15308,14.333011)" />
+       transform="matrix(-0.03527673,0.9782664,-1.0967269,-0.02438834,324.62391,14.333011)" />
   </g>
 </svg>
