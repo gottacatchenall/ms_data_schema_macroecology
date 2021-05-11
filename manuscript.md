@@ -8,16 +8,13 @@ bibliography: [references.bib]
 Ecological data is often difficult to access and reuse [@Poisot2019EcoDat;
 @Gonzalez2015ActSta]. Macroecological data is, by definition, collected across
 scales which necessitate collaboration across more individuals than can feasibly
-coordinate with one-another. In practice, ecological data is collected for a
-purpose at a a given spatial/temporal/organizational scale. Combining this data
-would be good. We want to use this data to test hypotheses on many spatial and
-temporal scales. Assimilation of data at increasing spatial and temporal scales
-is necessary, both to better understand macroecology and biogeography, but also
-to quantify human influence on the biosphere and as a product of this
-quantification to mitigate its negative effects [@Giron-Nava2017QuaArg]. Many
-databases of ecological and environmental data exist, but synthesizing this data
-into a single product suitable for analysis often remains tedious as data are
-not in formats that can be easily interfaced.
+coordinate with one-another. Yet assimilation of data at increasing spatial and
+temporal scales is necessary, both to better understand macroecology and
+biogeography, but also to quantify human influence on the biosphere and as a
+product of this quantification to mitigate its negative effects
+[@Giron-Nava2017QuaArg]. Many databases of ecological and environmental data
+exist, but synthesizing this data into a single product suitable for analysis
+often remains tedious as data are not in formats that can be easily interfaced.
 
 
 The solution to this problem is standardization [@Zimmerman2008NewKno]---developing
@@ -67,22 +64,10 @@ variable. The are no fixed set of variables used in ecological studies, and
 there are good reasons to use different formats to represent the same data
 depending on context.
 
-In the modern era, nearly all scientists rely on scientific software for some
-aspect of their work, including but not limited to:
-data processing, statistical analyses, and simulation.
-Next-generation biodiversity monitoring will
-necessitate the collection and processing of increasing amounts of data from a
-variety of sources, requiring the software used to handle this data
-is flexible and enables for computationally intensive tasks [@Hampton2013BigDat].
-`Julia` is a programming language designed for modern scientific computing.  
-In practice, `Julia` is written much like the dynamically-typed, interpreted
-languages currently popular (R, Python).
-
-
-We propose defining the standard within a programming language (Julia). There is
-no one correct way to represent data, the best format for data representation is
-context-dependent.
-We can build a standard for data that represents the same kind of information using Julia's type system.
+We propose defining the standard within a programming language (Julia). We can build a standard for ecological data using Julia's type system.
+Abstract type is used to cover the same type of information. Concrete types
+represent the different ways you can represent that information, with interfaces
+to change between them.
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
@@ -90,11 +75,9 @@ occurrence data. (cite SDMLayers here).
  from the beginning to promote
 design patterns from object-oriented languages.  
 
-Need an explanation of OOP paradigms, etc here.  
-By making type a huge part of the language you can get the speed benefits of
-static typed languages.
-
 ![todo](./figures/concept.png){#fig:concept}
+
+
 
 Why else is julia good?
 
