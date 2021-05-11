@@ -43,28 +43,23 @@ enables collaboration among scientists who may never otherwise interact. Many
 fields have succeeded in standardizing data by defining a common file format.
 There are too many examples to count: the `FASTA` format for representing
 genomic sequences (maintained by NCBI), the `FITS` format in astronomy
-(maintained by NASA GSFC).
-
-
-In GIS, there are themselves too many standards too
-count leading to the problem most effectively summarized in the xkcd cartoon
-@fig:xkcd. Open standards for file formats have grown outside the sciences as
+(maintained by NASA GSFC). Open standards have enabled outside the sciences as
 well---the modern internet would be impossible without HTTP and IP standards. We
 learn that standardization of data enables automation because there is no
-ambiguity in what is being sent and received between clients.
+ambiguity in what is being sent and received between clients. In GIS, there are
+themselves too many standards too count leading to the "15 standards" problem
+most effectively summarized in the xkcd cartoon @fig:xkcd.
 
 ![todo](./figures/xkcdstandards.png){#fig:xkcd}
 
 The primary take-aways are that good standards are unambiguous, open and free to
 implement, and able to change over time without breaking backward compatibility.
-To avoid the problem in @fig:xkcd, these standards must be _extendable_, such
-that building onto an existing standard is always easier than building a new
-one.
-
-Standards tend to proliferate when they have after gaining support from
-institutions (FITS and Astronomy), or when publication requires data available
-in these formats (e.g. FASTA sequences made available on NCBI for most genomic
-studies).
+To avoid the "15 standards" in @fig:xkcd, when developing a standard it must be
+_extendable_,  such that building onto an existing standard is always easier
+than building a new one. Standards tend to become widely adopted when after
+gaining support from institutions (FITS and Astronomy), or when publication
+requires data available in these formats (e.g. FASTA sequences made available on
+NCBI for most genomic studies).
 
 
 # Using `Julia` to define living data standards
