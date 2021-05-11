@@ -46,16 +46,23 @@ genomic sequences (maintained by NCBI), the `FITS` format in astronomy
 (maintained by NASA GSFC). Open standards have enabled outside the sciences as
 well---the modern internet would be impossible without HTTP and IP standards. We
 learn that standardization of data enables automation because there is no
-ambiguity in what is being sent and received between clients. In GIS, there are
-themselves too many standards too count leading to the "15 standards" problem
-most effectively summarized in the xkcd cartoon @fig:xkcd.
+ambiguity in what is being sent and received between clients.
 
-![todo](./figures/xkcdstandards.png){#fig:xkcd}
+In some cases standardization does not unify, but instead produces many competing
+standards. For example, in GIS, there are
+themselves too many standards too count, `TIFF`, `GeoTIFF`, and so on.
+
+This leads to the "15 standards" problem summarized in @fig:xkcd.
+
+![XKCD cartoon #NUM.](./figures/xkcdstandards.png){#fig:xkcd}
 
 The primary take-aways are that good standards are unambiguous, open and free to
 implement, and able to change over time without breaking backward compatibility.
+Further the development of standards over time is a democratic process where the
+users of the standard contribute to its change over time. 
+
 To avoid the "15 standards" in @fig:xkcd, when developing a standard it must be
-_extendable_,  such that building onto an existing standard is always easier
+_extendable_, such that building onto an existing standard is always easier
 than building a new one, while not altering the behaviour of the original standard.
 Standards tend to become widely adopted when after
 gaining support from institutions (FITS and Astronomy), or when publication
