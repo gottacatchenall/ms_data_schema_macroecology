@@ -51,7 +51,7 @@
       "orcid": "0000-0001-6075-8081"
     }
   ],
-  "description": "A paper on why we should develop next-generation biodiversitymonitoring systems based on open standards for data representation, and how EcoJulia is already doing this.",
+  "description": "A paper on why we should develop next-generation biodiversity monitoring systems based on open standards for data representation, and the Julia programming language can enable this.",
   "keywords": [
     "standards",
     "open science",
