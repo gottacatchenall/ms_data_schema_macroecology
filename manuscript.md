@@ -8,44 +8,45 @@ bibliography: [references.bib]
 Ecological data is often difficult to access and reuse [@Poisot2019EcoDat;
 @Gonzalez2015ActSta]. Macroecological data is, by definition, collected across
 scales which necessitate collaboration across more individuals than can feasibly
-coordinate with one-another. Yet assimilation of data at increasing spatial and
-temporal scales is necessary, both to better understand Earth's macroecology and
-biogeography, but also to mitigate the effects and anthropogenic change
-[@Giron-Nava2017QuaArg]. Many databases of ecological and environmental data
-exist, but synthesizing this data into a single product suitable for analysis
-often remains tedious as data are not in formats that can be easily combined or
-interfaced. The solution to this problem is standardization
-[@Zimmerman2008NewKno]---developing a schema such that data
-collected in a variety of contexts can be assimilated and integrated into separate
-analysis of ecological processes.
-
-Here we briefly review the approaches to data standardization developed in other
-fields of study that have faced similar challenges. 
-We argue that developing a common representation of ecological data will have
-three primary benefits: **1**) it will enable new forms of analysis by making it
-easier to combine data from different sources [@Heberling2021DatInt], **2)**
-enable continuous integration of new data for next-generation biodiversity
-monitoring [@Kuhl2020EffBio], and **3)** aid in open sharing and
-reproduceability of published results [@Borregaard2016MorRep;
-@Zimmerman2008NewKno].
-We then propose building a living standard for ecological data in the `Julia`
-programming language, and argue this is necessary to obtain the benefits or
-standardization mentioned above.
+coordinate with one-another. Yet assimilation of this data is necessary, both to
+better understand Earth's macroecology and biogeography, but also to mitigate
+the effects and anthropogenic change on biodiversity and its benefits to
+humanity [@Giron-Nava2017QuaArg].
+Many databases of ecological, evolutionary, and environmental data exist, but
+but synthesizing this data into a single product suitable for analysis often
+remains tediousm as data are not in formats that can be easily combined or
+interfaced.
+Here we propose that we can solve this problem through standardization
+[@Zimmerman2008NewKno]---developing a schema such that data collected in a
+variety of contexts can be assimilated while minimizing the overhead of data
+cleaning and wrangling.
 
 
 
-
-
+We briefly review the approaches to data standardization developed in other
+fields of study that have faced similar challenges. We argue that developing a
+common representation of ecological data will have three primary benefits:
+**1**) it will enable new forms of analysis by making it easier to combine data
+from different sources [@Heberling2021DatInt], **2)** enable continuous
+integration of new data for next-generation biodiversity monitoring
+[@Kuhl2020EffBio], and **3)** aid in open sharing and reproduceability of
+published results [@Borregaard2016MorRep; @Zimmerman2008NewKno]. We then propose
+building a living standard for ecological data in the `Julia` programming
+language, and argue this is necessary to obtain the benefits or standardization
+mentioned above.
 
 
 # A brief history of data standards
 
-Standardization of data in the sciences has long been done by defining a common
-file format.
-
-There are too many examples to count: the `.FASTA` format for representing
+Sharing data is fundamental to the scientific method. Standardization of data
+enables collaboration among scientists who may never otherwise interact. Many
+fields have succeeded in standardizing data by defining a common file format.
+There are too many examples to count: the `FASTA` format for representing
 genomic sequences (maintained by NCBI), the `FITS` format in astronomy
-(maintained by NASA GSFC). In GIS, there are themselves too many standards too
+(maintained by NASA GSFC).
+
+
+In GIS, there are themselves too many standards too
 count leading to the problem most effectively summarized in the xkcd cartoon
 @fig:xkcd. Open standards for file formats have grown outside the sciences as
 well---the modern internet would be impossible without HTTP and IP standards. We
