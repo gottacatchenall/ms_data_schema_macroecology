@@ -72,8 +72,11 @@ to change between them.
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
 occurrence data. (cite SDMLayers here).
- from the beginning to promote
-design patterns from object-oriented languages.  
+Both observations contain information about a `AbstractLocation`. However, if the
+climate data is in a raster format, and the locations are in coordinates, we
+could define concrete types that `RasterLocation` and `CoordinateLocation`, both of which are subtypes of `AbstractLocation`. Then, converting between the two is
+easy easy as defining the interface between `RasterLocation` and `CoordinateLocation`.
+
 
 ![todo](./figures/concept.png){#fig:concept}
 
