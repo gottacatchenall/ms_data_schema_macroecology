@@ -31,10 +31,12 @@ of new data for next-generation biodiversity monitoring [@Kuhl2020EffBio], and
 **3)** aid in open sharing and reproduceability of published results
 [@Borregaard2016MorRep; @Zimmerman2008NewKno].
 
-Here we briefly review the approaches to data standardization have been developed in other fields of study that have faced similar challenges. We then propose building
-a living standard for ecological data in the `Julia` programming language, and argue
-the case for why a living standard for ecological data is required to obtain
-the benefits or standardization mentioned above.
+Here we briefly review the approaches to data standardization have been
+developed in other fields of study that have faced similar challenges. We then
+propose building a living standard for ecological data in the `Julia`
+programming language, and argue the case for why a living standard for
+ecological data is required to obtain the benefits or standardization mentioned
+above.
 
 
 
@@ -43,51 +45,27 @@ the benefits or standardization mentioned above.
 Standardization of data in the sciences has long been done by defining a common
 file format.
 
+There are too many examples to count: the `.FASTA` format for representing genomic sequences (maintained by NCBI), the `FITS` format in astronomy (maintained by NASA GSFC). In GIS, there are themselves too many standards too count leading to the
+problem most effectively summarized in the xkcd cartoon @fig:xkcd.
+Open standards for file formats have grown outside the sciences as well---the
+modern internet would be impossible without HTTP and IP standards.
+We learn that standardization of data enables automation because there is no ambiguity in what is being sent and received between clients.
+
+![todo](./figures/xkcdstandards.png){#fig:xkcd}
+
+The primary take-aways are that good standards are unambiguous, open and free to
+implement, and able to change over time without breaking backward compatibility.
+To avoid the problem in @fig:xkcd, these standards must be _extendable_, such that building onto an existing standard is always easier than building a new one.
+
+Standards tend to proliferate when they have after gaining support from institutions (FITS and Astronomy), or when publication requires data available in these formats (e.g. FASTA sequences made available on NCBI for most genomic studies).
 
 
-The `.FASTA` format for representing genomic sequences, a standard maintained by
-NCBI, enables integration with NCBI's standardized taxonomy identifiers further
-enables `FASTA` files to reference metadata about each sequence. Macroecological
-tools would be wise to use preexisting taxonomical standards as species
-identifiers.
+# Using `Julia` to define living data standards
 
-
-
-The `FITS` format in astronomy.
-
-Computer networking and `HTTP`, `IP`, etc.
-Enables automation because there is no ambiguity in what is being sent and
-received between clients.
-
-### Open and accessible
-
-Publication necessitates making data available in a public repository that is
-in the standardized format (`.FASTA`)
-
-### Automated integration
-
-Another message here is automation (in-situ sensors routinely uploading data to
-servers, servers continuously pulling satellite data), and subsequent
-dimensionality reduction and composition of different remotely collected data.
-
-
-## Why has this proven difficult in ecology?
-
-Why? Macroecological data is variable. The are no fixed set of variables
-used in ecological studies, and using different forms to represent the same
-data can be benefitial depending on context.
-
-
-We propose defining the standard within a programming language (Julia).
-There is no one correct way to represent data,
-the best format for data representation is context-dependent. Leveraging Julia's
-type system.
-
-As an example, consider the increasingly ubiquitous case of attempting to associate
-climate data (derived from WorldClim, CHLSEA, or similar) with species occurrence
-data.
-
-
+Why has standardization proven difficult in ecology? Macroecological data is
+variable. The are no fixed set of variables used in ecological studies, and
+there are good reasons to use different formats to represent the same data
+depending on context.
 
 In the modern era, nearly all scientists rely on scientific software for some
 aspect of their work, including but not limited to:
@@ -96,38 +74,36 @@ Next-generation biodiversity monitoring will
 necessitate the collection and processing of increasing amounts of data from a
 variety of sources, requiring the software used to handle this data
 is flexible and enables for computationally intensive tasks [@Hampton2013BigDat].
-
-
-
-# Using `Julia` to define living data standards
-
 `Julia` is a programming language designed for modern scientific computing.  
-
 In practice, `Julia` is written much like the dynamically-typed, interpreted
 languages currently popular (R, Python).
 
-However, unlike these languages, Julia is designed from the beginning to promote
+
+We propose defining the standard within a programming language (Julia). There is
+no one correct way to represent data, the best format for data representation is
+context-dependent.
+We can build a standard for data that represents the same kind of information using Julia's type system.
+
+As an example, consider the increasingly ubiquitous case of attempting to
+associate climate data (derived from WorldClim, CHLSEA, or similar) with species
+occurrence data. (cite SDMLayers here).
+ from the beginning to promote
 design patterns from object-oriented languages.  
 
 Need an explanation of OOP paradigms, etc here.  
-
-Object-oriented design patterns
-  1. overloading of functions, dispatch
-  2. types and type hierarchies
-
 By making type a huge part of the language you can get the speed benefits of
 static typed languages.
 
 ![todo](./figures/concept.png){#fig:concept}
 
-
 Why else is julia good?
-    idiomatic
-    high performance
-    built in tools for testing
-    built in tools for parallelization
-    built in package manager
-    shorter, more readable, more reusable code than certain competing languages
+
+- idiomatic
+- high performance
+- built in tools for testing
+- built in tools for parallelization
+- built in package manager
+- shorter, more readable, more reusable code than certain competing languages
 
 Last paragraph about the potential workings of EcoJulia.
 EcoBase is a package in EcoJulia which enables common representation of ecological data that represents the same type of information. This creates a living standard for ecological data embodied in the code defining data types. Using standardized types as a bridge between data and analysis is how we create an open standard for ecological data. This splits the processes of data aggregation and data analysis into discrete parts.
