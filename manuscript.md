@@ -9,31 +9,32 @@ Ecological data is often difficult to access and reuse [@Poisot2019EcoDat;
 @Gonzalez2015ActSta]. Macroecological data is, by definition, collected across
 scales which necessitate collaboration across more individuals than can feasibly
 coordinate with one-another. Yet assimilation of data at increasing spatial and
-temporal scales is necessary, both to better understand macroecology and
-biogeography, but also to quantify human influence on the biosphere and as a
-product of this quantification to mitigate its negative effects
+temporal scales is necessary, both to better understand Earth's macroecology and
+biogeography, but also to mitigate the effects and anthropogenic change
 [@Giron-Nava2017QuaArg]. Many databases of ecological and environmental data
 exist, but synthesizing this data into a single product suitable for analysis
-often remains tedious as data are not in formats that can be easily interfaced.
+often remains tedious as data are not in formats that can be easily combined or
+interfaced. The solution to this problem is standardization
+[@Zimmerman2008NewKno]---developing a schema such that data
+collected in a variety of contexts can be assimilated and integrated into separate
+analysis of ecological processes.
+
+Here we briefly review the approaches to data standardization developed in other
+fields of study that have faced similar challenges. 
+We argue that developing a common representation of ecological data will have
+three primary benefits: **1**) it will enable new forms of analysis by making it
+easier to combine data from different sources [@Heberling2021DatInt], **2)**
+enable continuous integration of new data for next-generation biodiversity
+monitoring [@Kuhl2020EffBio], and **3)** aid in open sharing and
+reproduceability of published results [@Borregaard2016MorRep;
+@Zimmerman2008NewKno].
+We then propose building a living standard for ecological data in the `Julia`
+programming language, and argue this is necessary to obtain the benefits or
+standardization mentioned above.
 
 
-The solution to this problem is standardization [@Zimmerman2008NewKno]---developing
-a robust schema such that ecological data collected in a variety of contexts can
-be assimilated and integrated into larger scale analysis of ecological
-processes. How does standardization solve this problem? Adopting a standard
-representation of ecological data will have three primary benefits: **1**) it
-will enable new forms of analysis by making it easier to combine data from
-different sources [@Heberling2021DatInt], **2)** enable continuous integration
-of new data for next-generation biodiversity monitoring [@Kuhl2020EffBio], and
-**3)** aid in open sharing and reproduceability of published results
-[@Borregaard2016MorRep; @Zimmerman2008NewKno].
 
-Here we briefly review the approaches to data standardization have been
-developed in other fields of study that have faced similar challenges. We then
-propose building a living standard for ecological data in the `Julia`
-programming language, and argue the case for why a living standard for
-ecological data is required to obtain the benefits or standardization mentioned
-above.
+
 
 
 
@@ -42,19 +43,27 @@ above.
 Standardization of data in the sciences has long been done by defining a common
 file format.
 
-There are too many examples to count: the `.FASTA` format for representing genomic sequences (maintained by NCBI), the `FITS` format in astronomy (maintained by NASA GSFC). In GIS, there are themselves too many standards too count leading to the
-problem most effectively summarized in the xkcd cartoon @fig:xkcd.
-Open standards for file formats have grown outside the sciences as well---the
-modern internet would be impossible without HTTP and IP standards.
-We learn that standardization of data enables automation because there is no ambiguity in what is being sent and received between clients.
+There are too many examples to count: the `.FASTA` format for representing
+genomic sequences (maintained by NCBI), the `FITS` format in astronomy
+(maintained by NASA GSFC). In GIS, there are themselves too many standards too
+count leading to the problem most effectively summarized in the xkcd cartoon
+@fig:xkcd. Open standards for file formats have grown outside the sciences as
+well---the modern internet would be impossible without HTTP and IP standards. We
+learn that standardization of data enables automation because there is no
+ambiguity in what is being sent and received between clients.
 
 ![todo](./figures/xkcdstandards.png){#fig:xkcd}
 
 The primary take-aways are that good standards are unambiguous, open and free to
 implement, and able to change over time without breaking backward compatibility.
-To avoid the problem in @fig:xkcd, these standards must be _extendable_, such that building onto an existing standard is always easier than building a new one.
+To avoid the problem in @fig:xkcd, these standards must be _extendable_, such
+that building onto an existing standard is always easier than building a new
+one.
 
-Standards tend to proliferate when they have after gaining support from institutions (FITS and Astronomy), or when publication requires data available in these formats (e.g. FASTA sequences made available on NCBI for most genomic studies).
+Standards tend to proliferate when they have after gaining support from
+institutions (FITS and Astronomy), or when publication requires data available
+in these formats (e.g. FASTA sequences made available on NCBI for most genomic
+studies).
 
 
 # Using `Julia` to define living data standards
@@ -64,18 +73,20 @@ variable. The are no fixed set of variables used in ecological studies, and
 there are good reasons to use different formats to represent the same data
 depending on context.
 
-We propose defining the standard within a programming language (Julia). We can build a standard for ecological data using Julia's type system.
-Abstract type is used to cover the same type of information. Concrete types
-represent the different ways you can represent that information, with interfaces
-to change between them.
+We propose defining the standard within a programming language (Julia). We can
+build a standard for ecological data using Julia's type system. Abstract type is
+used to cover the same type of information. Concrete types represent the
+different ways you can represent that information, with interfaces to change
+between them.
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
-occurrence data. (cite SDMLayers here).
-Both observations contain information about a `AbstractLocation`. However, if the
-climate data is in a raster format, and the locations are in coordinates, we
-could define concrete types that `RasterLocation` and `CoordinateLocation`, both of which are subtypes of `AbstractLocation`. Then, converting between the two is
-easy easy as defining the interface between `RasterLocation` and `CoordinateLocation`.
+occurrence data. (cite SDMLayers here). Both observations contain information
+about a `AbstractLocation`. However, if the climate data is in a raster format,
+and the locations are in coordinates, we could define concrete types that
+`RasterLocation` and `CoordinateLocation`, both of which are subtypes of
+`AbstractLocation`. Then, converting between the two is easy easy as defining
+the interface between `RasterLocation` and `CoordinateLocation`.
 
 
 ![todo](./figures/concept.png){#fig:concept}
