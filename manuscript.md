@@ -56,7 +56,8 @@ The primary take-aways are that good standards are unambiguous, open and free to
 implement, and able to change over time without breaking backward compatibility.
 To avoid the "15 standards" in @fig:xkcd, when developing a standard it must be
 _extendable_,  such that building onto an existing standard is always easier
-than building a new one. Standards tend to become widely adopted when after
+than building a new one, while not altering the behaviour of the original standard.
+Standards tend to become widely adopted when after
 gaining support from institutions (FITS and Astronomy), or when publication
 requires data available in these formats (e.g. FASTA sequences made available on
 NCBI for most genomic studies).
