@@ -7,6 +7,7 @@ ${ _preprint() }
 
 \begin{document}
 \tikz [remember picture, overlay] %
+\node [shift={(-0.6in,1.1cm)},scale=0.2,opacity=0.4] at (current page.south east)[anchor=south east]{ };%
 \pagestyle{normal}
 \thispagestyle{firstpage}
 
@@ -20,11 +21,15 @@ ${ _preprint() }
 ${ authors:_list_authors()[, ] }
 \vskip 1em
 ${ institutions:_list_institutions()[; ] }\\
-${ for(authors) }
-${ if(it.email) }
-\textsuperscript{*}\,\,\texttt{${ it.email }}
+${ if(metadata.equalcontributions) }
+${ metadata.equalcontributions:_list_institutions()[; ] }\\
 ${ endif }
-${ endfor }}
+\vskip 1em
+\textbf{Correspondance to:}\\
+${ for(metadata.corresponding) }
+${ metadata.corresponding.given } ${ metadata.corresponding.family } --- \texttt{${ metadata.corresponding.email }}\\
+${ endfor }
+}
 \end{flushleft}
 
 \vskip 2em
