@@ -127,6 +127,9 @@ interface to transform it into Julia data structures, and this combined
 data/interface package is all that is needed to either reproduce the results or
 incorporate that data into a larger data assemblage.
 
+
+The term "ecosystem" is often used metaphorically to describe a set of software tools that work together.
+
 trophic levels of dependencies for ecojulia
 
 
