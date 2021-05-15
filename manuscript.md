@@ -41,9 +41,9 @@ data enables collaboration among scientists who may never otherwise interact.
 Many fields have succeeded in standardizing data by defining a common file
 format. There are too many examples to count. To start with the familiar,
 standardization of genomic sequences (as `FASTA` files), and the
-data directly from next-gen sequencing machines, have enabled the flourishing of
+data directly from next-gen sequencing machines (as `FASTQ` files), have enabled the flourishing of
 genomics as a field of study, enabling data aggregation at scales that seemed
-impossible not that long ago [@Kahn2011FutGen]. The `FITS` format in astonromy
+impossible not that long ago [@Kahn2011FutGen]. The `FITS` format in astronomy
 (maintained by NASA GSFC) similarly enabled sharing data from differently designed telescopes
 around the world. Open standards have enabled the growth of automated data
 processing outside the sciences as well---the modern internet would be
@@ -55,7 +55,7 @@ In some cases standardization does not unify, but instead produces many
 competing standards. For example, in geospatial data, there are too many
 standards too count, in part because this data is variable in its form (raster
 or vector). This leads to the "15 standards" problem summarized best by xkcd #927 (@fig:xkcd).
-The geospatial community partially alleviated this issye with the Geospatial
+The geospatial community partially alleviated this issue with the Geospatial
 Data Abstraction Libary [GDAL; @GDAL], a software library for interfacing with
 different formats of geospatial data. This enabled conversion between a large
 number of legacy data types and the GDAL preffered format, `GeoTIFF`, and in part
@@ -71,7 +71,7 @@ FITS), which can be enabled by requiring data available in standardized format
 prior to publication (e.g. FASTA sequences made available on NCBI for most
 journals in genomics). To avoid the "15 standards" in @fig:xkcd, when developing
 a standard it must be _extendable_, such that building onto an existing standard
-is always easier than building a new one, while not altering the behaviour of
+is always easier than building a new one, while not altering the behavior of
 the original standard. Defining using software to enable "living standards" (a
 la GDAL) enables this extendability, and makes standards more flexible. Further,
 this is best enabled when the evolution of a standard is democratic and open source.
@@ -124,13 +124,13 @@ visualization.
 Defining a living standard for ecological data in `Julia` will make it easier to
 combine data from different sources by splitting the process of data aggregation
 from the process of analysis. Integrating data from a particular study, or a new
-database, is as simple as implementing the interface from the data source to the
-standardized types. Data from individual studies could be incorporated into
-public repositories containing both the raw data and the interface to Julia data
-structures, and this combined data/interface package is all that is needed to
-either reproduce the results or incorporate that data into a larger data
-assemblage. This will make combining data from multiple sources easier, and
-yield benefits for the development and implementation of novel methods, as the
+database, would be as simple as implementing the interface from the data source
+to the standardized types. Data from individual studies could be incorporated
+into public repositories containing both the raw data and the interface to Julia
+data structures, and this combined data/interface package is all that is needed
+to either reproduce the results or incorporate that particular study's data into
+analysis. This will make combining data from multiple sources easier, and yield
+benefits for the development and implementation of novel methods, as the
 software for analysis becomes separate from the software for data cleaning and
 aggregation.
 
