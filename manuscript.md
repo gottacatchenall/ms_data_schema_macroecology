@@ -120,11 +120,11 @@ convert between `RasterLocation` and `CoordinateLocation`,
 then it doesn't matter what the original type of data you pass into the analysis
 method, the "interface to analysis" can convert this data to the proper type (see analysis panel of @fig:concept).
 
-`Julia` is an ideal candidate for this, in large part due to its type system.
+`Julia` is an ideal candidate to build this soft of standard, in large part due to its type system.
 However `Julia` serves to become the future of computing in biodiversity
 science. It is a modern language designed for high-performance scientific
 computing with expressive syntax that feels like writing high-level
-interpreted languages (e.g. Python, R, MATLAB) but with C-like speed. `Julia`
+interpreted languages (e.g. Python, R, MATLAB) but with performance that rivals `C`. `Julia`
 has built-in tools for testing, distributed computing on CPUs and GPUs, and a
 package manager and ecosystem with state-of-the art tools for data science, machine learning [@Innes2018FluEle; @Turing], simulation [@Harris2021EcoJl], and
 visualization.
