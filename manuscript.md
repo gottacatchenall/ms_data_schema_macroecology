@@ -54,7 +54,17 @@ received between clients.
 In some cases standardization does not unify, but instead produces many
 competing standards. For example, in geospatial data, there are too many
 standards too count, in part because this data is variable in its form (raster
-or vector). This leads to the "15 standards" problem summarized best by xkcd #927 (@fig:xkcd).
+or vector). Consider the number of formats commonly used to define a single location on Earth, plus the different types of data represented at those locations, and we arrive at the "15 standards" problem summarized best by xkcd #927 (@fig:xkcd).
+
+You can never cover all use cases. In the future, ecological data will be used
+and combined in ways we cannot anticipate in the present, and so to avoid "15
+standards" in @fig:xkcd, standards must be _extendable_, such that building onto
+an existing standard is always easier than building a new one, while not
+altering the behavior of the original standard. Using software to define "living
+standards" (a la GDAL) enables this extendability, and makes standards more
+flexible, and is best enabled when the evolution of a standard is democratic and
+open source.
+
 The geospatial community partially alleviated this issue with the Geospatial
 Data Abstraction Libary [GDAL; @GDAL], a software library for interfacing with
 different formats of geospatial data. This enabled conversion between a large
@@ -63,28 +73,23 @@ led to `GeoTIFF`'s increasing ubiquity.
 
 ![XKCD cartoon #927.](./figures/xkcdstandards.png){#fig:xkcd}
 
-
+What is to be learned from the history of data standardization?
 The primary take-aways are that good standards are unambiguous, open and free to
-implement, able to change over time without breaking backward compatibility.
-Standards tend to become widely adopted with the support of institutions (FASTA,
-FITS), which can be enabled by requiring data available in standardized format
-prior to publication (e.g. FASTA sequences made available on NCBI for most
-journals in genomics). To avoid the "15 standards" in @fig:xkcd, when developing
-a standard it must be _extendable_, such that building onto an existing standard
-is always easier than building a new one, while not altering the behavior of
-the original standard. Using software to define "living standards" (a
-la GDAL) enables this extendability, and makes standards more flexible, and is
-best enabled when the evolution of a standard is democratic and open source.
+implement, extendable, and able to change over time without breaking backward
+compatibility. Standards tend to become widely adopted with the support of
+institutions (e.g. FASTA and NCBI, FITS and NASA), which can be enabled by requiring data available in
+standardized format prior to publication (e.g.  FASTA sequences made available on
+GenBank for most genomics journals).
 
 # Using `Julia` to define living data standards
 
 Why has standardization proven difficult in ecology? The are no fixed set of
 variables used in ecological studies, and there are good reasons to use
-different formats to represent the same data depending on context. The EML
-format has been proposed [@Jones2019EcoMet] to solve this problem, yet for the
-reasons explored in the previous section, standardization through file-format
-faces challenges when faced data that is highly variable in form and format, as
-is the case in macroecology.
+different formats to represent the same data depending on the context in which
+that data is used. The Ecological Metadata Langauge (EML) format has been proposed [@Jones2019EcoMet] to solve
+this problem, yet for the reasons explored in the previous section,
+standardization through file-format faces challenges when faced data that is
+highly variable in form and format, as is the case in macroecology.
 
 Here we propose defining a living standard for ecological data within the
 `Julia` programming language. `Julia` adopts design patterns from object-oriented
@@ -98,12 +103,12 @@ types for each of the different ways you can represent a given category of
 information (@fig:concept).
 
 
-![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format.](./figures/concept.png){#fig:concept}
+![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format. Two standardized data types (teal and green), each of which are supertypes for specific concrete types (different shapes). Each abstract supertype defines interfaces between its concrete types. This means the user can pass data to analysis methods that require specific data types in any form, and the interface to analysis converts the data into the appropriate type. ](./figures/concept.png){#fig:concept}
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
 occurrence data [@Dansereau2021SimJl]. Both observations contain information
-about a `AbstractLocation`. However, if the climate data is in a raster format,
+about an `AbstractLocation`. However, if the climate data is in a raster format,
 and the locations are in coordinates, we could define concrete types
 `RasterLocation` and `CoordinateLocation`, both of which are subtypes of
 `AbstractLocation`. Some methods of analysis might want this data in the form of
@@ -135,12 +140,12 @@ software for analysis becomes separate from the software for data cleaning and
 aggregation.
 
 We envision a modern set of tools for ecology in `Julia` based around the
-standardized types. The term "ecosystem" is often used metaphorically to
-describe a set of software tools that work together. We imagine multiple
-"trophic-levels" of packages for ecological science in `Julia` based around the
-"basal" set of standardized types --- a modular set of tools that can be chained
-together create arbitrarily complex analysis pipelines. that can be scaled to
-meet the needs of next-generation biodiversity monitoring.
+standardized types. Far outside of ecology, the term "ecosystem" is used
+metaphorically to describe a set of software tools that work together. We
+imagine multiple "trophic-levels" of packages for ecological science in `Julia`
+based around the "basal" set of standardized types --- a modular set of tools
+that can be chained together create arbitrarily complex analysis pipelines. that
+can be scaled to meet the needs of next-generation biodiversity monitoring.
 
 
 
