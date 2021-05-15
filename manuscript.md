@@ -15,7 +15,7 @@ humanity [@Giron-Nava2017QuaArg]. Many sources of ecological, evolutionary, and
 environmental data exist, but synthesizing this data into a single product
 suitable for analysis often remains tedious as data are not in formats that can
 be easily combined or interfaced. Here we propose that we can solve this problem
-through standardization [@Zimmerman2008NewKno]---developing a living standard such that
+through standardization [@Zimmerman2008NewKno]---developing a common definition such that
 data collected in a variety of contexts can be assimilated while minimizing the
 overhead of data cleaning and wrangling.
 
