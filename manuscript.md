@@ -98,7 +98,7 @@ Here we propose defining a living standard for ecological data within the
 languages, and enables building hierarchies of abstract and concrete types
 without the heavyhanded type syntax of lower level objected-oriented languages.
 How do we define a standard using this type system? Each distinct category
-of information (e.g. location, species, environmental variables, and so on) 
+of information (e.g. location, species, environmental variables, and so on)
 has a corresponding abstract type (e.g. `AbstractLocation`,
 `AbstractSpecies`, `AbstractEnvironmentalVariable`). Then, we define concrete
 types for each of the different ways you can represent a given category of
@@ -110,16 +110,17 @@ information (@fig:concept).
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
 occurrence data [@Dansereau2021SimJl]. Both observations contain information
-about an `AbstractLocation`. However, if the climate data is in a raster format,
-and the locations are in coordinates, we could define concrete types
+about an `AbstractLocation`. If the climate data is in a raster format,
+and the locations are in coordinates, w
+ could define concrete types
 `RasterLocation` and `CoordinateLocation`, both of which are subtypes of
 `AbstractLocation`. Some methods of analysis might want this data in the form of
-`RasterLocation`s. Others might want `CoordinateLocation`s. If the standardized
-type defines an interface between `RasterLocation` and `CoordinateLocation`,
+`RasterLocation`s. Others might want `CoordinateLocation`s. If we define a way to
+convert between `RasterLocation` and `CoordinateLocation`,
 then it doesn't matter what the original type of data you pass into the analysis
-method, it can convert it to the proper type (see analysis panel of @fig:concept).
+method, the "interface to analysis" can convert this data to the proper type (see analysis panel of @fig:concept).
 
-`Julia` is an ideal candidate for this, in large part, due to its type system.
+`Julia` is an ideal candidate for this, in large part due to its type system.
 However `Julia` serves to become the future of computing in biodiversity
 science. It is a modern language designed for high-performance scientific
 computing with expressive syntax that feels like writing high-level
