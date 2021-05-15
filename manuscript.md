@@ -105,7 +105,7 @@ types for each of the different ways you can represent a given category of
 information (@fig:concept).
 
 
-![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format. Two standardized data types (teal and green), each of which are supertypes for specific concrete types (different shapes). Each abstract supertype defines interfaces between its concrete types. This means the user can pass data to analysis methods that require specific data types in any form, and the interface to analysis converts the data into the appropriate type. ](./figures/concept.png){#fig:concept}
+![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format. Two standardized data types (purple and teal), each of which are supertypes for specific concrete types (different shapes). Each abstract supertype defines interfaces between its concrete types. This means the user can pass data to analysis methods that require specific data types in any form, and the interface to analysis converts the data into the appropriate type. ](./figures/concept.png){#fig:concept}
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
