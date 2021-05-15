@@ -121,7 +121,7 @@ then it doesn't matter what the original type of data is passed into the analysi
 method, the "interface to analysis" can convert this data to the proper type (see analysis panel of @fig:concept).
 
 `Julia` is an ideal candidate to build this sort of standard, in large part due to its type system.
-However `Julia` serves to become the future of computing in biodiversity
+However beyond this `Julia` serves to become the future of computing in biodiversity
 science. It is a modern language designed for high-performance scientific
 computing with expressive syntax that feels like writing high-level
 interpreted languages (e.g. Python, R, MATLAB) but with performance that rivals `C`. `Julia`
