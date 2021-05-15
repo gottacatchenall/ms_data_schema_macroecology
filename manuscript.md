@@ -24,7 +24,7 @@ primary benefits: it will **1**)  enable new forms of analysis by making it
 easier to combine data from different sources [@Heberling2021DatInt], **2)**
 enable continuous integration of new data for next-generation biodiversity
 monitoring [@Kuhl2020EffBio], and **3)** aid in open sharing and
-reproduceability of published results [@Borregaard2016MorRep;
+reproducability of published results [@Borregaard2016MorRep;
 @Zimmerman2008NewKno]. We then briefly review approaches to data standardization
 developed in other fields of study, in order to learn what makes an open
 standard succeed in promoting data sharing, and what doesn't.  Based on the
@@ -39,12 +39,12 @@ of standardization mentioned earlier.
 Sharing data is fundamental to the scientific method, and standardization of
 data enables collaboration among scientists who may never otherwise interact.
 Many fields have succeeded in standardizing data by defining a common file
-format. There are too many examples to count. To start with the familiar, the
-`FASTA` format for genomic sequences, and the `FASTQ` format for representing
-data direct from next-gen sequencing machines, have enabled the flourishing of
+format. There are too many examples to count. To start with the familiar,
+standardization of genomic sequences (as `FASTA` files), and the
+data directly from next-gen sequencing machines, have enabled the flourishing of
 genomics as a field of study, enabling data aggregation at scales that seemed
-impossible not that long ago [@cite]. In astronomy the `FITS` format [maintained
-by NASA GSFC; @cite] enabled sharing data from differently designed telescopes
+impossible not that long ago [@Kahn2011FutGen]. In astronomy, the `FITS` format (maintained
+by NASA GSFC) similarly enabled sharing data from differently designed telescopes
 around the world. Open standards have enabled the growth of automated data
 processing outside the sciences as well---the modern internet would be
 impossible without HTTP and IP standards. This highlights how standardization of
@@ -56,7 +56,7 @@ In some cases standardization does not unify, but instead produces many
 competing standards. For example, in GIS, there are themselves too many
 standards too count, in part because this data takes on different forms (raster
 or vector). This leads to the "15 standards" problem summarized in @fig:xkcd.
-This was partially solved by Geospatial Data Abstraction Libary [GDAL; @CITE], a
+This was partially solved by Geospatial Data Abstraction Libary [GDAL; @GDAL], a
 software library for interfacing with different formats of geospatial data. This
 enabled conversion between a large number of legacy data types and `GeoTIFF`,
 and in part led to `GeoTIFF`'s  increasing ubiquity  
@@ -72,10 +72,9 @@ prior to publication (e.g. FASTA sequences made available on NCBI for most
 journals in genomics). To avoid the "15 standards" in @fig:xkcd, when developing
 a standard it must be _extendable_, such that building onto an existing standard
 is always easier than building a new one, while not altering the behaviour of
-the original standard. Defining "living standards" embodied in software (a la
-GDAL) enables this extendability, and makes standards more flexible. Further the
-development of standards over time is a democratic process where the users of
-the standard contribute to its change over time.
+the original standard. Defining using software to enable "living standards" (a
+la GDAL) enables this extendability, and makes standards more flexible. Further,
+this is best enabled when this development is democratic and open source.
 
 # Using `Julia` to define living data standards
 
@@ -93,8 +92,8 @@ hierarchies of abstract and concrete types without the heavyhanded type syntax o
 lower level objected-oriented languages. How do we define a standard using this
 type system? Different distinct category of information (e.g. location, species,
 environmental variables, and so on) is a subtype of a corresponding abstract
-supertype (e.g. AbstractLocation, AbstractSpecies,
-AbstractEnvironmentalVariable). Then, we define concrete types for each of the
+supertype (e.g. `AbstractLocation`, `AbstractSpecies`,
+`AbstractEnvironmentalVariable`). Then, we define concrete types for each of the
 different ways you can represent a given information (@fig:concept).
 
 
@@ -102,7 +101,7 @@ different ways you can represent a given information (@fig:concept).
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
-occurrence data. (cite SDMLayers here). Both observations contain information
+occurrence data [@Dansereau2021SimJl]. Both observations contain information
 about a `AbstractLocation`. However, if the climate data is in a raster format,
 and the locations are in coordinates, we could define concrete types
 `RasterLocation` and `CoordinateLocation`, both of which are subtypes of
@@ -118,8 +117,7 @@ science. It is a modern language designed for high-performance scientific
 computing with expressive syntax that feels like writing high-level
 interpreted languages (e.g. Python, R, MATLAB) but with C-like speed. `Julia`
 has built-in tools for testing, distributed computing on CPUs and GPUs, and a
-package manager and ecosystem with state-of-the art tools for data science
-[@DataFrames], machine learning [@Flux, @Turing], simulation [@EcoSISTEM], and
+package manager and ecosystem with state-of-the art tools for data science, machine learning [@Innes2018FluEle; @Turing], simulation [@Harris2021EcoJl], and
 visualization.
 
 
