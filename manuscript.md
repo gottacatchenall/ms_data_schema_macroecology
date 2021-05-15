@@ -111,7 +111,7 @@ As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
 occurrence data [@Dansereau2021SimJl]. Both observations contain information
 about an `AbstractLocation`. If the climate data is in a raster format,
-and the locations are in coordinates, w
+and the locations are in coordinates, we
  could define concrete types
 `RasterLocation` and `CoordinateLocation`, both of which are subtypes of
 `AbstractLocation`. Some methods of analysis might want this data in the form of
