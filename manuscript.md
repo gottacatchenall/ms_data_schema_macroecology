@@ -58,7 +58,7 @@ or vector). This leads to the "15 standards" problem summarized best by xkcd #92
 The geospatial community partially alleviated this issue with the Geospatial
 Data Abstraction Libary [GDAL; @GDAL], a software library for interfacing with
 different formats of geospatial data. This enabled conversion between a large
-number of legacy data types and the GDAL preffered format, `GeoTIFF`, and in part
+number of legacy data types and the GDAL preferred format, `GeoTIFF`, and in part
 led to `GeoTIFF`'s increasing ubiquity.
 
 ![XKCD cartoon #927.](./figures/xkcdstandards.png){#fig:xkcd}
@@ -72,9 +72,9 @@ prior to publication (e.g. FASTA sequences made available on NCBI for most
 journals in genomics). To avoid the "15 standards" in @fig:xkcd, when developing
 a standard it must be _extendable_, such that building onto an existing standard
 is always easier than building a new one, while not altering the behavior of
-the original standard. Defining using software to enable "living standards" (a
-la GDAL) enables this extendability, and makes standards more flexible. Further,
-this is best enabled when the evolution of a standard is democratic and open source.
+the original standard. Using software to define "living standards" (a
+la GDAL) enables this extendability, and makes standards more flexible, and is
+best enabled when the evolution of a standard is democratic and open source.
 
 # Using `Julia` to define living data standards
 
