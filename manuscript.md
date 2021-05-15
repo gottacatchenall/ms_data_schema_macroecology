@@ -117,7 +117,7 @@ and the locations are in coordinates, w
 `AbstractLocation`. Some methods of analysis might want this data in the form of
 `RasterLocation`s. Others might want `CoordinateLocation`s. If we define a way to
 convert between `RasterLocation` and `CoordinateLocation`,
-then it doesn't matter what the original type of data you pass into the analysis
+then it doesn't matter what the original type of data is passed into the analysis
 method, the "interface to analysis" can convert this data to the proper type (see analysis panel of @fig:concept).
 
 `Julia` is an ideal candidate to build this soft of standard, in large part due to its type system.
