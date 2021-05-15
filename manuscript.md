@@ -55,22 +55,25 @@ competing standards. For example, in geospatial data, there are too many
 standards too count, in part because this data is variable in its form (raster
 or vector). Consider the number of formats commonly used to define a single location on Earth, plus the different types of data represented at those locations, and we arrive at the "15 standards" problem summarized best by xkcd #927 (@fig:xkcd).
 
-You can never cover all use cases. In the future, ecological data will be used
-and combined in ways we cannot anticipate in the present, and so to avoid "15
+![XKCD cartoon #927.](./figures/xkcdstandards.png){#fig:xkcd}
+
+You can never cover all use cases, as is the goal of the character in @fig:xkcd. In the future, ecological data will be used
+and combined in ways we cannot anticipate in the present. To avoid the "15
 standards" in @fig:xkcd, standards must be _extendable_, such that building onto
 an existing standard is always easier than building a new one, while not
-altering the behavior of the original standard. Using software to define "living
-standards" (a la GDAL) enables this extendability, and makes standards more
-flexible, and is best enabled when the evolution of a standard is democratic and
-open source.
+altering the behavior of the original standard.
 
-The geospatial community partially alleviated this issue with the Geospatial
+
+The geospatial communit alleviated the 15-standards problem issue with the Geospatial
 Data Abstraction Libary [GDAL; @GDAL], a software library for interfacing with
 different formats of geospatial data. This enabled conversion between a large
 number of legacy data types and the GDAL preferred format, `GeoTIFF`, and in part
 led to `GeoTIFF`'s increasing ubiquity.
+ Using software to define "living
+standards" (a la GDAL) enables this extendability, and makes standards more
+flexible, and is best enabled when the evolution of a standard is democratic and
+open source.
 
-![XKCD cartoon #927.](./figures/xkcdstandards.png){#fig:xkcd}
 
 What is to be learned from the history of data standardization?
 The primary take-aways are that good standards are unambiguous, open and free to
