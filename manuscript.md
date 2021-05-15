@@ -40,50 +40,62 @@ open stand then propose building a living standard for ecological data in the
 
 # A brief history of data standards
 
-Sharing data is fundamental to the scientific method. Standardization of data
+Sharing data is fundamental to the scientific method, and standardization of data
 enables collaboration among scientists who may never otherwise interact.
-
 Many fields have succeeded in standardizing data by defining a common file
-format. There are too many examples to count: the `FASTA` format for
-representing genomic sequences (maintained by NCBI), the `FITS` format in
-astronomy (maintained by NASA GSFC). This approach has also appeared ecology
-[@Jones2019EcoMet]. Open standards have enabled outside the sciences
+format. There are too many examples to count. To start with the familiar, the `FASTA` format for genomic sequences and the `FASTQ` format for representing data direct from next-gen sequencing machines have enabled the flourishing of genomics as a field of study, enabling data aggregation at scales that seemed
+impossible not that long ago [ @cite].
+In astronomy the `FITS` format (maintained by NASA GSFC) enabled sharing
+data from differently designed telescopes around the world.
+Open standards have enabled outside the sciences
 as well---the modern internet would be impossible without HTTP and IP standards.
-We learn that standardization of data enables automation because there is no
-ambiguity in what is being sent and received between clients.
+This highlights how standardization of data enables automation because there is no ambiguity in what is being sent and received between clients.
 
 
 In some cases standardization does not unify, but instead produces many competing
 standards. For example, in GIS, there are
-themselves too many standards too count, `TIFF`, `GeoTIFF`, and so on.
+themselves too many standards too count, in part because this data
+takes on different forms (raster or vector).
 This leads to the "15 standards" problem summarized in @fig:xkcd.
+This was partially solved by Geospatial Data Abstraction Libary [GDAL; @CITE], a software library for
+interfacing with different formats of geospatial data. This
+enabled conversion between a large number of legacy data types and `GeoTIFF`, and in part led to `GeoTIFF`'s  increasing ubiquity  
 
 ![XKCD cartoon #NUM.](./figures/xkcdstandards.png){#fig:xkcd}
 
 
 The primary take-aways are that good standards are unambiguous, open and free to
 implement, able to change over time without breaking backward compatibility.
-Standards tend to become widely adopted with the support of institutions (FITS
-and Astronomy), which take take the form of requiring  data available in
-standardized format prior to publication (e.g. FASTA sequences made available on
-NCBI for most genomic studies).
-To avoid the "15 standards" in @fig:xkcd, when developing a standard it must be
-_extendable_, such that building onto an existing standard is always easier
-than building a new one, while not altering the behaviour of the original standard. Further the development of standards over time is a democratic
-process where the users of the standard contribute to its change over time.
+Standards tend to become widely adopted with the support of institutions (FASTA,
+FITS), which can be enabled by requiring data available in standardized format
+prior to publication (e.g. FASTA sequences made available on NCBI for most
+journals in genomics). To avoid the "15 standards" in @fig:xkcd, when developing
+a standard it must be _extendable_, such that building onto an existing standard
+is always easier than building a new one, while not altering the behaviour of
+the original standard. Defining "living standards" embodied in software (a la
+GDAL) enables this extendability, and makes standards more flexible. Further the
+development of standards over time is a democratic process where the users of
+the standard contribute to its change over time.
 
 # Using `Julia` to define living data standards
 
-Why has standardization proven difficult in ecology? Macroecological data is
-variable. The are no fixed set of variables used in ecological studies, and
-there are good reasons to use different formats to represent the same data
-depending on context.
+Why has standardization proven difficult in ecology? The are no fixed set of
+variables used in ecological studies, and there are good reasons to use
+different formats to represent the same data depending on context. The EML
+format has been proposed [@Jones2019EcoMet] to  solve this problem, yet this
+file-standard approach still faces challenges when faced with the variability
+macroecological data.
 
-We propose defining the standard within a programming language (Julia). We can
-build a standard for ecological data using Julia's type system. Abstract type is
-used to cover the same type of information. Concrete types represent the
-different ways you can represent that information, with interfaces to change
-between them.
+We propose defining a living standard for ecological data within the `Julia` programming language. This, like a "GDAL-for-ecology", defines interfaces between the file types and databases used for ecological data.
+`Julia` is an ideal candidate for this due to its type system.
+`Julia` learns the lessons of object-oriented languages, and enables
+building hierarchies of abstract and concrete types without the heavyhanded
+syntax of compiled objected oriented languages.
+How do we define a standard using this type system?
+Different distinct category of information (e.g. location, species, environmental variables, and so on) is a subtype of a corresponding abstract supertype (e.g. AbstractLocation, AbstractSpecies, AbstractEnvironmentalVariable).
+Then, we define concrete types for each of the different ways you can represent a given information.
+
+![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format.](./figures/concept.png){#fig:concept}
 
 As an example, consider the increasingly ubiquitous case of attempting to
 associate climate data (derived from WorldClim, CHLSEA, or similar) with species
@@ -97,11 +109,9 @@ type defines an interface between `RasterLocation` and `CoordinateLocation`,
 then it doesn't matter what the original type of data you pass into the analysis
 method is, it can convert it to the proper type.
 
-![An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format.](./figures/concept.png){#fig:concept}
 
 
-
-Why else is julia good?
+Why else is `julia` good?
 
 - idiomatic
 - high performance
