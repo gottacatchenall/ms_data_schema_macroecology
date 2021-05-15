@@ -98,7 +98,7 @@ Here we propose defining a living standard for ecological data within the
 languages, and enables building hierarchies of abstract and concrete types
 without the heavyhanded type syntax of lower level objected-oriented languages.
 How do we define a standard using this type system? Each distinct category
-of information (e.g. location, species, environmental variables, and so on) is a
+of information (e.g. location, species, environmental variables, and so on) 
 has a corresponding abstract type (e.g. `AbstractLocation`,
 `AbstractSpecies`, `AbstractEnvironmentalVariable`). Then, we define concrete
 types for each of the different ways you can represent a given category of
