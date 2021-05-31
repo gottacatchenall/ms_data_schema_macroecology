@@ -19,18 +19,18 @@ through standardization [@Zimmerman2008NewKno]---developing a common definition 
 data collected in a variety of contexts can be assimilated while minimizing the
 overhead of data cleaning and wrangling.
 
-We argue a common representation of ecological data will have three
-primary benefits: it will **1**)  enable new forms of analysis by making it
-easier to combine data from different sources [@Heberling2021DatInt], **2)**
-enable continuous integration of new data for next-generation biodiversity
-monitoring [@Kuhl2020EffBio], and **3)** aid in open sharing and
-reproducability of published results [@Borregaard2016MorRep;
-@Zimmerman2008NewKno]. We then briefly review approaches to data standardization
-developed in other fields of study, in order to learn what makes an open
-standard succeed in promoting data sharing, and what doesn't.  Based on the
-properties of good standards we identify, we propose building a living standard for ecological data in the `Julia`
-programming language, and argue this is necessary to obtain the three primary benefits
-of standardization mentioned earlier.
+A common representation of ecological data will have three primary benefits: it
+will **1**)  enable new forms of analysis by making it easier to combine data
+from different sources [@Heberling2021DatInt], **2)** enable continuous
+integration of new data for next-generation biodiversity monitoring
+[@Kuhl2020EffBio], and **3)** aid in open sharing and reproducability of
+published results [@Borregaard2016MorRep; @Zimmerman2008NewKno]. Here, we
+briefly review approaches to data standardization developed in other fields, in
+order to determine what makes an open standard succeed in promoting data
+sharing, and what doesn't.  Based on the properties of good standards we
+identify, we propose building a living standard for ecological data in the
+`Julia` programming language, and argue this is necessary to obtain the three
+primary benefits of standardization mentioned earlier.
 
 
 # A brief history of data standards
