@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Toward an open standard for ecological data (via the <code>Julia</code> programming language)</title>
+    <script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+        :root {
+            --citation: #1976D2;
+            --structure: hsl(210, 61%, 43%);
+
+            --light: #474747;
+            --pale: #a5a5a5;
+            --grey: #e0e0e0;
+            --nav: #fdfdfd;
+
+            --width: 820px;
+            --inner-space: 1.2em;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        article > p {
+            line-height: 135%;
+        }
+        article > h1 {
+            padding-top: 3em;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+            border-bottom: 1px solid var(--structure);
+        }
+        a:hover {
+            font-weight: 500;
+        }
+        .citation {
+            color: var(--citation);
+        }
+        .container {
+            margin: 0em auto;
+            max-width: var(--width);
+            padding: var(--inner-space);
+        }
+        header > .container {
+            margin-top: 4em;
+        }
+        code, pre {
+            font-family: "Roboto Mono", monospace;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+        h1, h2, h3 {
+            color: var(--structure);
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+        h3 {
+            font-size: 1.8em;
+        }
+        h4 {
+            font-size: 1.5em;
+        }
+
+
+        header {
+            font-family: "Roboto", sans-serif;
+            z-index: 5;
+            color: black;
+            margin-top: 4rem;
+        }
+        .header--title {
+            font-weight: 500;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-scacing: -0.04em;
+        }
+        .header--authors > span {
+            color: var(--light);
+            font-weight: 400;
+        }
+        main {
+            padding-top: 8em !important;
+            padding-bottom: 8em !important;
+        }
+        footer {
+            background-color: var(--grey);
+            font-weight: 300;
+        }
+        .abstract {
+            color: var(--light);
+            margin-bottom: 5em;
+        }
+        figure {
+            max-width: 100%;
+            border: 1px solid var(--pale);
+            border-radius: 2px;
+            margin: 1em 0.5em;
+        }
+        figure > img {
+            max-width: 100%;
+            display: block;
+            margin: 0em auto;
+        }
+        figure > figcaption {
+            padding: var(--inner-space);
+        }
+        table {
+            width: 100%;
+            min-width: 100%;
+            border-collapse: collapse;
+        }
+        table > caption {
+            padding: var(--inner-space);
+        }
+        figcaption, caption {
+            color: var(--light);
+            font-weight: 300;
+        }
+        thead {
+            color: var(--structure);
+        }
+        td, th {
+            padding: 3px;
+        }
+        tr {
+            border-top: 1px solid var(--structure);
+            border-bottom: 1px solid var(--structure);
+        }
+        tbody > tr:nth-child(even) {background: var(--grey)};
+        tbody {
+            border-bottom: 1px solid var(--structure);
+        }
+        #refs {
+            font-size: 90%;
+            column-count: 2;
+        }
+        #refs > .csl-entry {
+            padding-bottom: 0.2em;
+            padding-top: 0.2em;
+        }
+        .hanging-indent > .csl-entry {
+            padding-left: 15px ;
+            text-indent: -15px ;
+        }    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+    integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+    crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+    crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false }
+                ]
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header--title">Toward an open standard for ecological data (via the <code>Julia</code> programming language)</div>
+            <div class="header--authors">
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0002-6506-6487" target="_blank">
+                        Michael D. Catchen
+                    </a>
+                                                                <sup class="affilcode">1</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                                <span class="header--author">
+                                        Michael K. Borregaard
+                                                                <sup class="affilcode">3</sup>
+                                    </span>
+                                <span class="header--author">
+                                        Richard Reeve
+                                                                <sup class="affilcode">3</sup>
+                                    </span>
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0002-0735-5184" target="_blank">
+                        Timothée Poisot
+                    </a>
+                                                                <sup class="affilcode">3</sup>
+                                    </span>
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0001-6075-8081" target="_blank">
+                        Andrew Gonzalez
+                    </a>
+                                                                <sup class="affilcode">1</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                            </div>
+            <section class="abstract">
+                <b>Abstract:</b> A paper on why we should develop next-generation biodiversity monitoring systems based on open standards for data representation, and how the Julia programming language can enable this.<br />
+            </section>
+        </div>
+    </header>
+
+    <main class="container">
+            <div class="artifacts">
+                <a href="draft.pdf" title="Draft PDF" target="_blank">draft</a>
+                <a href="preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
+            </div>
+
+
+        <article>
+            <h1 id="introduction">Introduction</h1>
+            <p>Ecological data is often difficult to access and reuse <span class="citation" data-cites="Poisot2019EcoDat Gonzalez2015ActSta">(Poisot et al. 2019; Gonzalez and Peres-Neto 2015)</span>. Macroecological data is, by definition, collected across scales which necessitate collaboration across more individuals than can feasibly coordinate with one-another. Yet assimilation of this data is necessary, both to better understand Earth’s macroecology and biogeography, but also to mitigate the effects and anthropogenic change on biodiversity and its benefits to humanity <span class="citation" data-cites="Giron-Nava2017QuaArg">(Giron-Nava et al. 2017)</span>. Many sources of ecological, evolutionary, and environmental data exist, but synthesizing this data into a single product suitable for analysis often remains tedious as data are not in formats that can be easily combined or interfaced. Here we propose that we can solve this problem through standardization <span class="citation" data-cites="Zimmerman2008NewKno">(Zimmerman 2008)</span>—developing a common definition such that data collected in a variety of contexts can be assimilated while minimizing the overhead of data cleaning and wrangling.</p>
+            <p>A common representation of ecological data will have three primary benefits: it will <strong>1</strong>) enable new forms of analysis by making it easier to combine data from different sources <span class="citation" data-cites="Heberling2021DatInt">(Heberling et al. 2021)</span>, <strong>2)</strong> enable continuous integration of new data for next-generation biodiversity monitoring <span class="citation" data-cites="Kuhl2020EffBio">(Kühl et al. 2020)</span>, and <strong>3)</strong> aid in open sharing and reproducability of published results <span class="citation" data-cites="Borregaard2016MorRep Zimmerman2008NewKno">(Borregaard and Hart 2016; Zimmerman 2008)</span>. Here, we briefly review approaches to data standardization developed in other fields, in order to determine what makes an open standard succeed in promoting data sharing, and what doesn’t. Based on the properties of good standards we identify, we propose building a living standard for ecological data in the <code>Julia</code> programming language, and argue this is necessary to obtain the three primary benefits of standardization mentioned earlier.</p>
+            <h1 id="a-brief-history-of-data-standards">A brief history of data standards</h1>
+            <p>Sharing data is fundamental to the scientific method, and standardization of data enables collaboration among scientists who may never otherwise interact. Many fields have succeeded in standardizing data by defining a common file format. There are too many examples to count. To start with the familiar, standardization of genomic sequences (as <code>FASTA</code> files), and the data directly from next-gen sequencing machines (as <code>FASTQ</code> files), have enabled the flourishing of genomics as a field of study, enabling data aggregation at scales that seemed impossible not that long ago <span class="citation" data-cites="Kahn2011FutGen">(Kahn 2011)</span>. The <code>FITS</code> format in astronomy (maintained by NASA GSFC) similarly enabled sharing data from differently designed telescopes around the world. Open standards have enabled the growth of automated data processing outside the sciences as well—the modern internet would be impossible without HTTP and IP standards. This highlights how standardization of data enables automation because there is no ambiguity in what is being sent and received between clients.</p>
+            <p>In some cases standardization does not unify, but instead produces many competing standards. For example, in geospatial data, there are too many standards too count, in part because this data is variable in its form (raster or vector). Consider the number of formats commonly used to define a single location on Earth, plus the different types of data represented at those locations, and we arrive at the “15 standards” problem summarized best by xkcd #927 (fig. 1).</p>
+            <figure>
+            <img src="./figures/xkcdstandards.png" id="fig:xkcd" alt="Figure 1: XKCD cartoon #927." /><figcaption aria-hidden="true">Figure 1: XKCD cartoon #927.</figcaption>
+            </figure>
+            <p>You can never cover all use cases, as is the goal of the character in fig. 1. In the future, ecological data will be used and combined in ways we cannot anticipate in the present. To avoid the “15 standards” in fig. 1, standards must be <em>extendable</em>, such that building onto an existing standard is always easier than building a new one, while not altering the behavior of the original standard.</p>
+            <p>The geospatial communit alleviated the 15-standards problem issue with the Geospatial Data Abstraction Libary <span class="citation" data-cites="GDAL">(GDAL; GDAL/OGR contributors 2021)</span>, a software library for interfacing with different formats of geospatial data. This enabled conversion between a large number of legacy data types and the GDAL preferred format, <code>GeoTIFF</code>, and in part led to <code>GeoTIFF</code>’s increasing ubiquity. Using software to define “living standards” (a la GDAL) enables this extendability, and makes standards more flexible, and is best enabled when the evolution of a standard is democratic and open source.</p>
+            <p>What is to be learned from the history of data standardization? The primary take-aways are that good standards are unambiguous, open and free to implement, extendable, and able to change over time without breaking backward compatibility. Standards tend to become widely adopted with the support of institutions (e.g. FASTA and NCBI, FITS and NASA), which can be enabled by requiring data available in standardized format prior to publication (e.g. FASTA sequences made available on GenBank for most genomics journals).</p>
+            <h1 id="using-julia-to-define-living-data-standards">Using <code>Julia</code> to define living data standards</h1>
+            <p>Why has standardization proven difficult in ecology? The are no fixed set of variables used in ecological studies, and there are good reasons to use different formats to represent the same data depending on the context in which that data is used. The Ecological Metadata Langauge (EML) format has been proposed <span class="citation" data-cites="Jones2019EcoMet">(Jones et al. 2019)</span> to solve this problem, yet for the reasons explored in the previous section, standardization through file-format faces challenges when faced data that is highly variable in form and format, as is the case in macroecology.</p>
+            <p>Here we propose defining a living standard for ecological data within the <code>Julia</code> programming language. <code>Julia</code> adopts design patterns from object-oriented languages, and enables building hierarchies of abstract and concrete types without the heavyhanded type syntax of lower level objected-oriented languages. How do we define a standard using this type system? Each distinct category of information (e.g. location, species, environmental variables, and so on) has a corresponding abstract type (e.g. <code>AbstractLocation</code>, <code>AbstractSpecies</code>, <code>AbstractEnvironmentalVariable</code>). Then, we define concrete types for each of the different ways you can represent a given category of information (fig. 2).</p>
+            <figure>
+            <img src="./figures/concept.png" id="fig:concept" alt="Figure 2: An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format. Two standardized data types (purple and teal), each of which are supertypes for specific concrete types (different shapes). Each abstract supertype defines interfaces between its concrete types. This means the user can pass data to analysis methods that require specific data types in any form, and the interface to analysis converts the data into the appropriate type." /><figcaption aria-hidden="true">Figure 2: An illustration of how the Julia type system enables standardization of data while allowing for flexibility for the input data format. Two standardized data types (purple and teal), each of which are supertypes for specific concrete types (different shapes). Each abstract supertype defines interfaces between its concrete types. This means the user can pass data to analysis methods that require specific data types in any form, and the interface to analysis converts the data into the appropriate type.</figcaption>
+            </figure>
+            <p>As an example, consider the increasingly ubiquitous case of attempting to associate climate data (derived from WorldClim, CHLSEA, or similar) with species occurrence data <span class="citation" data-cites="Dansereau2021SimJl">(Dansereau and Poisot 2021)</span>. Both observations contain information about an <code>AbstractLocation</code>. If the climate data is in a raster format, and the locations are in coordinates, we could define concrete types <code>RasterLocation</code> and <code>CoordinateLocation</code>, both of which are subtypes of <code>AbstractLocation</code>. Some methods of analysis might want this data in the form of <code>RasterLocation</code>s. Others might want <code>CoordinateLocation</code>s. If we define a way to convert between <code>RasterLocation</code> and <code>CoordinateLocation</code>, then it doesn’t matter what the original type of data is passed into the analysis method, the “interface to analysis” can convert this data to the proper type (see analysis panel of fig. 2).</p>
+            <p><code>Julia</code> is an ideal candidate to build this sort of standard, in large part due to its type system. However beyond this <code>Julia</code> serves to become the future of computing in biodiversity science. It is a modern language designed for high-performance scientific computing with expressive syntax that feels like writing high-level interpreted languages (e.g. Python, R, MATLAB) but with performance that rivals <code>C</code>. <code>Julia</code> has built-in tools for testing, distributed computing on CPUs and GPUs, and a package manager and ecosystem with state-of-the art tools for data science, machine learning <span class="citation" data-cites="Innes2018FluEle Turing">(Innes 2018; Ge, Xu, and Ghahramani 2018)</span>, simulation <span class="citation" data-cites="Harris2021EcoJl">(Harris and Reeve 2021)</span>, and visualization.</p>
+            <p>Defining a living standard for ecological data in <code>Julia</code> will make it easier to combine data from different sources by splitting the process of data aggregation from the process of analysis. Integrating data from a particular study, or a new database, would be as simple as implementing the interface from the data source to the standardized types. Data from individual studies could be incorporated into public repositories containing both the raw data and the interface to Julia data structures, and this combined data/interface package is all that is needed to either reproduce the results or incorporate that particular study’s data into analysis. This will make combining data from multiple sources easier, and yield benefits for the development and implementation of novel methods, as the software for analysis becomes separate from the software for data cleaning and aggregation.</p>
+            <p>We envision a modern set of tools for ecology in <code>Julia</code> based around the standardized types. Far outside of ecology, the term “ecosystem” is used metaphorically to describe a set of software tools that work together. We imagine multiple “trophic-levels” of packages for ecological science in <code>Julia</code> based around the “basal” set of standardized types — a modular set of tools that can be chained together create arbitrarily complex analysis pipelines. that can be scaled to meet the needs of next-generation biodiversity monitoring.</p>
+            <h1 class="unnumbered" id="references">References</h1>
+            <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+            <div id="ref-Borregaard2016MorRep" class="csl-entry" role="doc-biblioentry">
+            Borregaard, Michael Krabbe, and Edmund M. Hart. 2016. <span>“Towards a More Reproducible Ecology.”</span> <em>Ecography</em> 39 (4): 349–53. <a href="https://doi.org/10.1111/ecog.02493">https://doi.org/10.1111/ecog.02493</a>.
+            </div>
+            <div id="ref-Dansereau2021SimJl" class="csl-entry" role="doc-biblioentry">
+            Dansereau, Gabriel, and Timothée Poisot. 2021. <span>“SimpleSDMLayers.jl and GBIF.jl: A Framework for Species Distribution Modeling in Julia.”</span> <em>Journal of Open Source Software</em> 6 (57): 2872. <a href="https://doi.org/10.21105/joss.02872">https://doi.org/10.21105/joss.02872</a>.
+            </div>
+            <div id="ref-GDAL" class="csl-entry" role="doc-biblioentry">
+            GDAL/OGR contributors. 2021. <em>GDAL/OGR Geospatial Data Abstraction Software Library</em>. Open Source Geospatial Foundation. <a href="https://gdal.org">https://gdal.org</a>.
+            </div>
+            <div id="ref-Turing" class="csl-entry" role="doc-biblioentry">
+            Ge, Hong, Kai Xu, and Zoubin Ghahramani. 2018. <span>“Turing: A Language for Flexible Probabilistic Inference.”</span> In <em>International Conference on Artificial Intelligence and Statistics, AISTATS 2018, 9-11 April 2018, Playa Blanca, Lanzarote, Canary Islands, Spain</em>, 1682–90. <a href="http://proceedings.mlr.press/v84/ge18b.html">http://proceedings.mlr.press/v84/ge18b.html</a>.
+            </div>
+            <div id="ref-Giron-Nava2017QuaArg" class="csl-entry" role="doc-biblioentry">
+            Giron-Nava, A, Cc James, Af Johnson, D Dannecker, B Kolody, A Lee, M Nagarkar, et al. 2017. <span>“Quantitative Argument for Long-Term Ecological Monitoring.”</span> <em>Marine Ecology Progress Series</em> 572 (May): 269–74. <a href="https://doi.org/10.3354/meps12149">https://doi.org/10.3354/meps12149</a>.
+            </div>
+            <div id="ref-Gonzalez2015ActSta" class="csl-entry" role="doc-biblioentry">
+            Gonzalez, Andrew, and Pedro R. Peres-Neto. 2015. <span>“Act to Staunch Loss of Research Data.”</span> <em>Nature</em> 520 (7548): 436–36. <a href="https://doi.org/10.1038/520436c">https://doi.org/10.1038/520436c</a>.
+            </div>
+            <div id="ref-Harris2021EcoJl" class="csl-entry" role="doc-biblioentry">
+            Harris, Claire, and Richard Reeve. 2021. <span>“EcoSISTEM.jl - Ecosystem Simulation Through Integrated Species-Trait Environment Modelling.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.4716816">https://doi.org/10.5281/zenodo.4716816</a>.
+            </div>
+            <div id="ref-Heberling2021DatInt" class="csl-entry" role="doc-biblioentry">
+            Heberling, J. Mason, Joseph T. Miller, Daniel Noesgaard, Scott B. Weingart, and Dmitry Schigel. 2021. <span>“Data Integration Enables Global Biodiversity Synthesis.”</span> <em>Proceedings of the National Academy of Sciences</em> 118 (6). <a href="https://doi.org/10.1073/pnas.2018093118">https://doi.org/10.1073/pnas.2018093118</a>.
+            </div>
+            <div id="ref-Innes2018FluEle" class="csl-entry" role="doc-biblioentry">
+            Innes, Mike. 2018. <span>“Flux: Elegant Machine Learning with Julia.”</span> <em>Journal of Open Source Software</em> 3 (25): 602. <a href="https://doi.org/10.21105/joss.00602">https://doi.org/10.21105/joss.00602</a>.
+            </div>
+            <div id="ref-Jones2019EcoMet" class="csl-entry" role="doc-biblioentry">
+            Jones, Matthew, Margaret O’Brien, Bryce Mecum, Carl Boettiger, Mark Schildhauer, Mitchell Maier, Timothy Whiteaker, Stevan Earl, and Steven Chong. 2019. <span>“Ecological Metadata Language Version 2.2.0.”</span> KNB Data Repository. <a href="https://doi.org/10.5063/F11834T2">https://doi.org/10.5063/F11834T2</a>.
+            </div>
+            <div id="ref-Kahn2011FutGen" class="csl-entry" role="doc-biblioentry">
+            Kahn, S. D. 2011. <span>“On the Future of Genomic Data.”</span> <em>Science</em> 331 (6018): 728–29. <a href="https://doi.org/10.1126/science.1197891">https://doi.org/10.1126/science.1197891</a>.
+            </div>
+            <div id="ref-Kuhl2020EffBio" class="csl-entry" role="doc-biblioentry">
+            Kühl, Hjalmar S., Diana E. Bowler, Lukas Bösch, Helge Bruelheide, Jens Dauber, David. Eichenberg, Nico Eisenhauer, et al. 2020. <span>“Effective Biodiversity Monitoring Needs a Culture of Integration.”</span> <em>One Earth</em> 3 (4): 462–74. <a href="https://doi.org/10.1016/j.oneear.2020.09.010">https://doi.org/10.1016/j.oneear.2020.09.010</a>.
+            </div>
+            <div id="ref-Poisot2019EcoDat" class="csl-entry" role="doc-biblioentry">
+            Poisot, Timothée, Anne Bruneau, Andrew Gonzalez, Dominique Gravel, and Pedro Peres-Neto. 2019. <span>“Ecological Data Should Not Be So Hard to Find and Reuse.”</span> <em>Trends in Ecology &amp; Evolution</em> 34 (6): 494–96. <a href="https://doi.org/10.1016/j.tree.2019.04.005">https://doi.org/10.1016/j.tree.2019.04.005</a>.
+            </div>
+            <div id="ref-Zimmerman2008NewKno" class="csl-entry" role="doc-biblioentry">
+            Zimmerman, Ann S. 2008. <span>“New Knowledge from Old Data: The Role of Standards in the Sharing and Reuse of Ecological Data.”</span> <em>Science, Technology, &amp; Human Values</em> 33 (5): 631–52. <a href="https://doi.org/10.1177/0162243907306704">https://doi.org/10.1177/0162243907306704</a>.
+            </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Affiliations</h2>
+            <sup>1</sup>&nbsp;McGill University; <sup>2</sup>&nbsp;Québec Centre for Biodiversity Sciences; <sup>3</sup>&nbsp;
+        </div>
+    </footer>
+
+
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+
+</html>
