@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="451.78738mm"
-   height="259.94553mm"
-   viewBox="0 0 451.78738 259.94552"
+   width="464.63391mm"
+   height="265.98953mm"
+   viewBox="0 0 464.63391 265.98953"
    version="1.1"
    id="svg1064"
    inkscape:version="1.0.1 (1.0.1+r74)"
@@ -30,17 +30,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.68447896"
-     inkscape:cx="951.61102"
-     inkscape:cy="520.93399"
+     inkscape:zoom="0.63303671"
+     inkscape:cx="694.76621"
+     inkscape:cy="536.09811"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1043"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="660"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -49,27 +49,27 @@
      showguides="true"
      inkscape:guide-bbox="true">
     <sodipodi:guide
-       position="189.75125,300.14508"
+       position="202.59778,300.14508"
        orientation="0,-1"
        id="guide1661" />
     <sodipodi:guide
-       position="318.38685,315.58764"
+       position="331.23338,315.58764"
        orientation="0,-1"
        id="guide1663" />
     <sodipodi:guide
-       position="396.49219,300.14508"
+       position="409.33872,300.14508"
        orientation="0,-1"
        id="guide2003" />
     <sodipodi:guide
-       position="-12.846532,186.69587"
+       position="-1.358983e-06,186.69587"
        orientation="1,0"
        id="guide2083" />
     <sodipodi:guide
-       position="149.82022,315.58764"
+       position="162.66675,315.58764"
        orientation="0,-1"
        id="guide1552" />
     <sodipodi:guide
-       position="496.31662,326.75029"
+       position="509.16315,326.75029"
        orientation="0,-1"
        id="guide1554" />
   </sodipodi:namedview>
@@ -89,7 +89,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(45.425789,-15.326874)">
+     transform="translate(58.27232,-9.2828674)">
     <rect
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#707070;stroke-width:0.177654;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50631;paint-order:markers fill stroke"
        id="rect2125"
@@ -99,10 +99,10 @@
        y="194.67668"
        rx="0.97607374" />
     <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1.62943;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1.64826;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect1627"
        width="464.63391"
-       height="259.94553"
+       height="265.98953"
        x="-58.27232"
        y="-275.2724"
        rx="2.1350033"
@@ -1698,7 +1698,7 @@
        y="57.620872"
        rx="0.78465348" />
     <rect
-       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6985c5;stroke-width:1.48166667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6985c5;stroke-width:1.48167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect1556"
        width="77.429199"
        height="49.381714"
@@ -1993,6 +1993,17 @@
        inkscape:transform-center-x="3.6240811e-06"
        transform="matrix(1.0386301,0,0,1.0444135,202.52894,-32.993272)"
        inkscape:transform-center-y="6.3874015e-06" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Light';letter-spacing:0px;fill:#393939;fill-opacity:1;stroke-width:0.264583"
+       x="235.70685"
+       y="239.43858"
+       id="text406"><tspan
+         sodipodi:role="line"
+         id="tspan404"
+         x="235.70685"
+         y="239.43858"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:6.35px;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed, Light';fill:#393939;fill-opacity:1;stroke-width:0.264583">AUC plot</tspan></text>
     <rect
        style="fill:#fcfcfc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.416165;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect412"
@@ -2378,7 +2389,7 @@
        rx="3.0247066"
        ry="3.0107019" />
     <rect
-       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6985c5;stroke-width:1.48166667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6985c5;stroke-width:1.48167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect1558"
        width="59.420757"
        height="49.410473"
